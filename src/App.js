@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
+import orangeImg from "./img/orange.png";
 
 // TODO:
 // Add villager images to squares
@@ -9,44 +10,55 @@ import { useState } from 'react';
 // Replace square 'X' markers with icon marker
 
 
-function Square({value, onSquareClick}) {
+function Square({value, onSquareClick, onShuffleClick, onClick, shuffleBoard}) {
   return (
-    <button className="square" onClick={onSquareClick}>
-      {value}
-    </button>
+    <div>
+      <button 
+        className="square" 
+        onClick={onSquareClick} 
+        //style={{ backgroundImage: `url("https://acnhapi.com/v1/images/villagers/"${onShuffleClick()}")` }}
+        // START HERE**************************
+        style={onClick}
+      >
+        {value}
+      </button>
+    </div>
   );
 }
 
+
 // Populate bingo card with villager images
-let alreadyUsed = [];
-function villagerPopulate() {
-  console.log('function running!');
-  let villagerNum = Math.floor(Math.random() * 391);
-  while(alreadyUsed.includes(villagerNum)) {
-    villagerNum = Math.floor(Math.random() * 391);
-  }
-  console.log(`villager number = ${villagerNum}`);
-  alreadyUsed.push(villagerNum);
-  const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`; 
-  let villagerStr = `backgroundImage: "url("${villagerUrl}")"`;
-  return villagerStr;
-}
+// let alreadyUsed = [];
+// function villagerPopulate() {
+//   console.log('function running!');
+//   let villagerNum = Math.floor(Math.random() * 391);
+//   while(alreadyUsed.includes(villagerNum)) {
+//     villagerNum = Math.floor(Math.random() * 391);
+//   }
+//   console.log(`villager number = ${villagerNum}`);
+//   alreadyUsed.push(villagerNum);
+//   const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`; 
+//   let villagerStr = `backgroundImage: "url("${villagerUrl}")"`;
+//   return villagerStr;
+// }
 
 
 export default function Board() {
   // A piece of state in the Board component: establishes state for toggle clicking
-  // Board declares a state variable named squares that defaults to an array of 9 nulls corresponding to the 9 squares
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  // Board declares a state variable named squares that defaults to an array of 25 nulls corresponding to the 25 squares
+  const [squares, setSquares] = useState(Array(25).fill(null));
   // Establishes state for background img
-  const [background, setBackground] = useState();
-
-  const marker = document.createElement("img");
-  marker.src = "https://acnhapi.com/v1/icons/bugs/1";
+  const [board, shuffleBoard] = useState(Array(25).fill(null));
 
   function handleClick(i) {
     // // Create a copy of the squares array and stores in the variable 'nextSquares'
     const nextSquares = squares.slice();
     if(!squares[i]) {
+      // nextSquares[i] = (
+      //   <div>
+      //     <img className='markerImage' src={orangeImg} key={i} alt="Bingo marker" width='125px' height='125px' />
+      //   </div>
+      //   );
       nextSquares[i] = ":)";
     } else {
       nextSquares[i] = null;
@@ -54,6 +66,26 @@ export default function Board() {
 
     // Let React know that the state of the component has changed, triggers a re-render of the components that use the squares state (Board) as well as child components (Square components that make up the board)
     setSquares(nextSquares);
+  }
+
+  // let alreadyUsed = [];
+  function populateImages() {
+    console.log('Im running')
+    // create copy of the board array, store in nextBoard
+    let nextBoard = board.slice();
+    for(let i = 0; i < 25; i++) {
+      let villagerNum = Math.floor(Math.random() * 391);
+      // Add alreadyUsd check later
+      let villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`;
+      //let styleString = 'backgroundImage: url("https://acnhapi.com/v1/images/villagers/' + villagerNum + '")';
+      let styleString = `backgroundImage: url("${villagerUrl}")`;
+
+      nextBoard[i] = styleString;
+      // return styleString;
+    }
+    console.log(nextBoard);
+
+    shuffleBoard(nextBoard);
   }
   
   const winner = calculateWinner(squares);
@@ -65,11 +97,11 @@ export default function Board() {
   return (
     <div>
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+        <Square value={squares[0]} style={ board } onSquareClick={() => handleClick(0)} />
+        <Square value={squares[1]} style={ board } onSquareClick={() => handleClick(1)} />
+        <Square value={squares[2]} style={ board } onSquareClick={() => handleClick(2)} />
+        <Square value={squares[3]} style={ board } onSquareClick={() => handleClick(3)} />
+        <Square value={squares[4]} style={ board } onSquareClick={() => handleClick(4)} />
       </div>
       <div className="board-row">
         <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
@@ -100,6 +132,7 @@ export default function Board() {
         <Square value={squares[24]} onSquareClick={() => handleClick(24)} />
       </div>
       <div className="status">{status}</div>
+      <button className="shuffle" value={board} onClick={() => populateImages()}>Shuffle</button>
     </div>
   );
 }
