@@ -8,6 +8,7 @@ import { useState } from 'react';
 //     + Shuffle button?
 // Replace square 'X' markers with icon marker
 
+
 function Square({value, onSquareClick}) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -16,33 +17,45 @@ function Square({value, onSquareClick}) {
   );
 }
 
-// the export keyword makes this function accessible outside of the file. 
-// The default keyword tells other files using your code that it's the main function in your file.
+// Populate bingo card with villager images
+let alreadyUsed = [];
+function villagerPopulate() {
+  console.log('function running!');
+  let villagerNum = Math.floor(Math.random() * 391);
+  while(alreadyUsed.includes(villagerNum)) {
+    villagerNum = Math.floor(Math.random() * 391);
+  }
+  console.log(`villager number = ${villagerNum}`);
+  alreadyUsed.push(villagerNum);
+  const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`; 
+  let villagerStr = `backgroundImage: "url("${villagerUrl}")"`;
+  return villagerStr;
+}
+
 
 export default function Board() {
   // A piece of state in the Board component: establishes state for toggle clicking
-  const [boxClicked, setBoxClick] = useState(false);
   // Board declares a state variable named squares that defaults to an array of 9 nulls corresponding to the 9 squares
   const [squares, setSquares] = useState(Array(9).fill(null));
+  // Establishes state for background img
+  const [background, setBackground] = useState();
+
+  const marker = document.createElement("img");
+  marker.src = "https://acnhapi.com/v1/icons/bugs/1";
 
   function handleClick(i) {
-    // Check for if the clicked box has already been clicked
-    if(squares[i]) {
-      squares[i] = null;
-    }
-    // Create a copy of the squares array and stores in the variable 'nextSquares'
+    // // Create a copy of the squares array and stores in the variable 'nextSquares'
     const nextSquares = squares.slice();
-    if(boxClicked) {
-      nextSquares[i] = null;
-    } else {
+    if(!squares[i]) {
       nextSquares[i] = ":)";
+    } else {
+      nextSquares[i] = null;
     }
 
     // Let React know that the state of the component has changed, triggers a re-render of the components that use the squares state (Board) as well as child components (Square components that make up the board)
     setSquares(nextSquares);
-    setBoxClick(!boxClicked);
   }
-
+  
   const winner = calculateWinner(squares);
   let status;
   if(winner) {
@@ -91,6 +104,7 @@ export default function Board() {
   );
 }
 
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2, 3, 4],          // horizontal row 1
@@ -106,6 +120,7 @@ function calculateWinner(squares) {
     [3, 8, 13, 18, 23],       // vertical row 4
     [4, 9, 14, 19, 24]        // vertical row 5
   ];
+
   for(let i = 0; i < lines.length; i++) {
     const [a, b, c, d, e] = lines[i];
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c] && squares[a] === squares[d] && squares[a] === squares[e]) {
