@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { useState } from 'react';
 import orangeImg from "./img/orange.png";
 
+// TODO:
+//   - Turn ':)' into fruits!
+//   - Add option to choose marker?
+//   -
 
 function Square({value, background, onSquareClick}) {
   return (
@@ -52,7 +56,7 @@ export default function Board() {
   }
 
   function populateImages() {
-    console.log('populateImages running');
+    setSquares(Array(25).fill(null));
     const nextBoard = board.slice();
     let alreadyUsed = [];
     for(let i = 0; i < 25; i++) {
