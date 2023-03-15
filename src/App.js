@@ -4,10 +4,22 @@ import orangeImg from "./img/orange.png";
 
 // TODO:
 //   - Turn ':)' into fruits!
-//   - Add option to choose marker?
-//   -
+//   - Add option to choose marker
+//   - Make it purty
 
-function Square({value, background, onSquareClick}) {
+function Marker({onMarkerClick}) {
+  return (
+    <img 
+      className='markerImage' 
+      src={onMarkerClick} 
+      alt='Bingo marker'
+      width='125px' 
+      height='125px' 
+    />
+  );
+}
+
+function Square({value, background, onSquareClick, Marker}) {
   return (
     <div>
       <button 
@@ -16,6 +28,7 @@ function Square({value, background, onSquareClick}) {
         data-url={background}
         style={{backgroundImage: `url(${background})`}}
       >
+        {Marker}
         {value}
       </button>
     </div>
@@ -23,32 +36,65 @@ function Square({value, background, onSquareClick}) {
 }
 
 function Button({onButtonClick}) {
-    return (
-        <div>
-            <button 
-                className="shuffle" 
-                onClick={onButtonClick}
-            >
-                Shuffle!
-            </button>
-        </div>
-    );
+  console.log('Button component running');
+
+  
+  return (
+    <div>
+        <button 
+            className="shuffle" 
+            onClick={onButtonClick}
+        >
+            Shuffle!
+        </button>
+    </div>
+  );
 }
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
+  const [marker, setMarker] = useState(null);
 
+  function markerPick(i) {
+    let markerChoice;
+    // initialize a variable that you will later pass to Marker
+    // set variable equal to whatever image user selects
+    // Pass variable to Marker
+    switch(i) {
+      case 0: 
+        let apple = './img/apple.png';
+        markerChoice = apple;
+        break;
+      case 1:
+        let cherry = './img/cherry.png';
+        markerChoice = cherry;
+        break;
+      case 2:
+        let coconut = './img/coconut.png';
+        markerChoice = coconut;
+        break;
+      case 3:
+        let orange = './img/orange.png';
+        markerChoice = orange;
+        break;
+      case 4:
+        let peach = './img/peach.png';
+        markerChoice = peach;
+        break;
+      case 5:
+        let pear = './img/pear.png';
+        markerChoice = pear;
+        break;
+    }
+    setMarker(markerChoice);
+  }
+  
   function handleClick(i) {
     console.log('handleclick running!')
     const nextSquares = squares.slice();
     if(!squares[i]) {
-      // nextSquares[i] = (
-      //   <div>
-      //     <img className='markerImage' src={orangeImg} key={i} alt="Bingo marker" width='125px' height='125px' />
-      //   </div>
-      //   );
-      nextSquares[i] = ":)";
+      nextSquares[i] = true;
     } else {
       nextSquares[i] = null;
     }
@@ -118,6 +164,16 @@ export default function Board() {
       </div>
       <div className="status">{status}</div>
       <Button className="shuffle" onButtonClick={() => populateImages()}>Shuffle</Button>
+      <div className="marker-options">
+        <ul>
+          <li choice={marker[0]} onMarkerClick={() => markerPick(0)}>Apple</li>
+          <li choice={marker[1]} onMarkerClick={() => markerPick(1)}>Cherry</li>
+          <li choice={marker[2]} onMarkerClick={() => markerPick(2)}>Coconut</li>
+          <li choice={marker[3]} onMarkerClick={() => markerPick(3)}>Orange</li>
+          <li choice={marker[4]} onMarkerClick={() => markerPick(4)}>Peach</li>
+          <li choice={marker[5]} onMarkerClick={() => markerPick(5)}>Pear</li>
+        </ul>
+      </div>
     </div>
   );
 }
