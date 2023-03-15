@@ -7,11 +7,11 @@ import orangeImg from "./img/orange.png";
 //   - Add option to choose marker
 //   - Make it purty
 
-function Marker({onMarkerClick}) {
+function Marker({choice, onMarkerClick}) {
   return (
     <img 
       className='markerImage' 
-      src={onMarkerClick} 
+      src={choice} 
       alt='Bingo marker'
       width='125px' 
       height='125px' 
@@ -58,9 +58,6 @@ export default function Board() {
 
   function markerPick(i) {
     let markerChoice;
-    // initialize a variable that you will later pass to Marker
-    // set variable equal to whatever image user selects
-    // Pass variable to Marker
     switch(i) {
       case 0: 
         let apple = './img/apple.png';
