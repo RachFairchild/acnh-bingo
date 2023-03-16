@@ -6,12 +6,14 @@ import orangeImg from "./img/orange.png";
 //   - Turn ':)' into fruits!
 //   - Add option to choose marker
 //   - Make it purty
+//   - Add alt text to villager images when generated
 
-function Marker({choice, onMarkerClick}) {
+function Marker({marker}) {
+  console.log('Marker component running')
   return (
     <img 
       className='markerImage' 
-      src={choice} 
+      src={marker} 
       alt='Bingo marker'
       width='125px' 
       height='125px' 
@@ -19,16 +21,22 @@ function Marker({choice, onMarkerClick}) {
   );
 }
 
-function Square({value, background, onSquareClick, Marker}) {
+function Square({value, marker, background, onSquareClick, Marker}) {
   return (
     <div>
+      {/* <button 
+        className='markerImage' 
+        style={{backgroundImage: `url(${orangeImg})`}}
+        alt='Bingo marker'
+        width='125px' 
+        height='125px' 
+      /> */}
       <button 
         className="square" 
         onClick={onSquareClick}
-        data-url={background}
         style={{backgroundImage: `url(${background})`}}
       >
-        {Marker}
+        <img src={marker} />
         {value}
       </button>
     </div>
@@ -36,9 +44,6 @@ function Square({value, background, onSquareClick, Marker}) {
 }
 
 function Button({onButtonClick}) {
-  console.log('Button component running');
-
-  
   return (
     <div>
         <button 
@@ -54,48 +59,45 @@ function Button({onButtonClick}) {
 export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
-  const [marker, setMarker] = useState(null);
+  const [marker, setMarker] = useState(``); // `appleImg`
+
 
   function markerPick(i) {
-    let markerChoice;
-    switch(i) {
-      case 0: 
-        let apple = './img/apple.png';
-        markerChoice = apple;
-        break;
-      case 1:
-        let cherry = './img/cherry.png';
-        markerChoice = cherry;
-        break;
-      case 2:
-        let coconut = './img/coconut.png';
-        markerChoice = coconut;
-        break;
-      case 3:
-        let orange = './img/orange.png';
-        markerChoice = orange;
-        break;
-      case 4:
-        let peach = './img/peach.png';
-        markerChoice = peach;
-        break;
-      case 5:
-        let pear = './img/pear.png';
-        markerChoice = pear;
-        break;
-    }
-    setMarker(markerChoice);
+    console.log('markerPick is running...');
+
+    const options = ['apple', 'cherry', 'coconut', 'orange', 'peach', 'pear'];
+    let selection = options[i];
+    const selectionUrl = `./img/${selection}.png`;
+
+    setMarker(selectionUrl);
+
+    console.log(`User chose ${selection}`);
+    console.log(`Marker state is now ${selectionUrl}`);    
   }
+
   
   function handleClick(i) {
-    console.log('handleclick running!')
+    console.log('handleClick running!')
     const nextSquares = squares.slice();
     if(!squares[i]) {
-      nextSquares[i] = true;
+      // nextSquares[i] = (
+        // <img 
+          // src={marker}
+          // className='markerImage' 
+          // style={{backgroundImage: `url(${marker})`}}
+          // alt='Bingo marker'
+          // width='125px' 
+          // height='125px' 
+        // />
+      // );
+      nextSquares[i] = `:)`;
+      // nextMark[i] = 'ORANGE';
     } else {
       nextSquares[i] = null;
+      // nextMark[i] = null;
     }
     setSquares(nextSquares);
+    // setMarker(nextMark);
   }
 
   function populateImages() {
@@ -109,9 +111,7 @@ export default function Board() {
       }
       alreadyUsed.push(villagerNum);
       const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`;
-
       nextBoard[i] = villagerUrl;
-      console.log(nextBoard[i]);
     }
     shuffleBoard(nextBoard);
   }
@@ -141,7 +141,8 @@ export default function Board() {
       <div className="board-row">
         <Square value={squares[10]} background={board[10]} onSquareClick={() => handleClick(10)} />
         <Square value={squares[11]} background={board[11]} onSquareClick={() => handleClick(11)} />
-        <Square value={squares[12]} background={board[12]} onSquareClick={() => handleClick(12)} />
+        {/* Free space: */}
+        <Square value={squares[12]} onSquareClick={() => handleClick(12)} />
         <Square value={squares[13]} background={board[13]} onSquareClick={() => handleClick(13)} />
         <Square value={squares[14]} background={board[14]} onSquareClick={() => handleClick(14)} />
       </div>
@@ -163,12 +164,12 @@ export default function Board() {
       <Button className="shuffle" onButtonClick={() => populateImages()}>Shuffle</Button>
       <div className="marker-options">
         <ul>
-          <li choice={marker[0]} onMarkerClick={() => markerPick(0)}>Apple</li>
-          <li choice={marker[1]} onMarkerClick={() => markerPick(1)}>Cherry</li>
-          <li choice={marker[2]} onMarkerClick={() => markerPick(2)}>Coconut</li>
-          <li choice={marker[3]} onMarkerClick={() => markerPick(3)}>Orange</li>
-          <li choice={marker[4]} onMarkerClick={() => markerPick(4)}>Peach</li>
-          <li choice={marker[5]} onMarkerClick={() => markerPick(5)}>Pear</li>
+          <button><li onClick={() => markerPick(0)}>Apple</li></button>
+          <button><li onClick={() => markerPick(1)}>Cherry</li></button>
+          <button><li onClick={() => markerPick(2)}>Coconut</li></button>
+          <button><li onClick={() => markerPick(3)}>Orange</li></button>
+          <button><li onClick={() => markerPick(4)}>Peach</li></button>
+          <button><li onClick={() => markerPick(5)}>Pear</li></button>
         </ul>
       </div>
     </div>

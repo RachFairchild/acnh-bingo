@@ -110,6 +110,11 @@ body {
   margin-left: 20px;
 }
 
-/* .markerImage {
+.marker-options ul {
+  list-style-type: none;
+}
+
+.markerImage {
+  display: none;
   width: 150px;
-} */
+}
