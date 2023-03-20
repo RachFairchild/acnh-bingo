@@ -15,7 +15,7 @@ import orangeImg from "./img/orange.png";
 //   - Add alt text to villager images when generated
 
 function Marker(marker, selection) {
-  console.log(`Marker component running: src = ${marker.selection}`);
+  // console.log(`Marker component running: src = ${marker.selection}`);
   // console.log(marker.selection)
   // console.log(`backgroundImage: `url(${marker.selection})``);
   return (
