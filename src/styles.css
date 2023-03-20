@@ -57,6 +57,12 @@ body {
 }
 
 .square {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  align-items: center;
+  align-content: stretch;
   background: #fff;
   background-image: none;
   background-size: 128px;
@@ -73,8 +79,22 @@ body {
   width: 128px;
 }
 
+.villagerName {
+  font-size: 30px;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
+  -webkit-text-stroke: 0.5px white;
+  margin-bottom: 0px;
+}
+
 @media screen and (max-width: 675px) {
   .square {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    align-items: center;
+    align-content: stretch;
     background: #fff;
     background-image: none;
     background-size: 64px;
@@ -89,6 +109,14 @@ body {
     padding: 0;
     text-align: center;
     width: 64px;
+  }
+
+  .villagerName {
+    font-size: 14px !important;
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: 0px white;
+    margin-bottom: -8px;
   }
 }
 
@@ -109,13 +137,6 @@ body {
 
 .game-info {
   margin-left: 20px;
-}
-
-.villagerName {
-  font-size: 35px;
-  color: #000000;
-  -webkit-text-fill-color: #000000;
-  -webkit-text-stroke: 1px white;
 }
 
 .marker-options ul {
