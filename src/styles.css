@@ -119,6 +119,10 @@ body {
     -webkit-text-stroke: 0px white;
     margin-bottom: -8px;
   }
+
+  .activeMarkers {
+    
+  }
 }
 
 .board-row:after {
@@ -148,3 +152,4 @@ body {
   display: none;
   width: 150px;
 }
+

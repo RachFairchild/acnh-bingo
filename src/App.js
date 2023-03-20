@@ -14,14 +14,18 @@ import orangeImg from "./img/orange.png";
 //   - Make it purty
 //   - Add alt text to villager images when generated
 
-function Marker({marker}) {
-  //console.log(`Marker component running: src = ${marker}`);
+function Marker(marker, selection) {
+  console.log(`Marker component running: src = ${marker.selection}`);
+  // console.log(marker.selection)
+  // console.log(`backgroundImage: `url(${marker.selection})``);
   return (
     <div>
       <img 
         className='markerImage'
-        src={marker}
-        //src={selectionRelUrl}
+        // src={marker}
+        // style={{backgroundImage: `url(${marker.selection})`}}
+        // style={{backgroundImage: `${selection}`}}
+        src={selection}
         alt='Bingo marker'
         width='125px' 
         height='125px' 
@@ -30,8 +34,8 @@ function Marker({marker}) {
   );
 }
 
-function Square({value, marker, title, background, onSquareClick, currentVillager, villagerName, Marker}) {
-  //console.log(`Square component running: src = ${marker}`);
+function Square({value, marker, squares, selection, title, background, onSquareClick, Board, Marker, markerPick}) {
+  //console.log(`Square component running: src = ${selection}`);
   // marker variable isn't reaching this component for some reason
   return (
     <div>
@@ -48,15 +52,25 @@ function Square({value, marker, title, background, onSquareClick, currentVillage
         style={{backgroundImage: `url(${background})`}}
         alt={title}
       >
-        {/* <img src={marker} alt=" " /> */}
-
+        <img 
+          className="activeMarkers"
+          src={orangeImg} 
+          alt=":)" 
+          style={{
+            zIndex: 10,
+            float: 'left',
+            display: value === true ? 'block' : 'none',
+            position: 'absolute'
+          }}
+          width='125px'
+          height='125px'
+        />
         {Marker}
         <h1 
           className="villagerName"
         >
           {title}
         </h1>
-        {value}
       </button>
     </div>
   );
@@ -81,26 +95,24 @@ export default function Board() {
   const [name, setName] = useState(Array(25).fill(null));
   const [marker, setMarker] = useState({orangeImg}); // `appleImg`
 
-
   //console.log(`${marker.orangeImg} is the same as ${orangeImg}`);
 
   function markerPick(i) {
     console.log('markerPick is running...');
 
-    const options = ['apple', 'cherry', 'coconut', 'orange', 'peach', 'pear'];
+    const options = ['appleImg', 'cherryImg', 'coconutImg', 'orangeImg', 'peachImg', 'pearImg'];
     let selection = options[i];
-    //const selectionUrl = `./img/${selection}.png`;
-    const selectionRelUrl = `${selection}Img`
+    //ket selectionUrl = `./img/${selection}.png`;
 
-    setMarker(selectionRelUrl);
+    setMarker(selection);
 
-    console.log(`User chose ${selection}`);
-    //console.log(`Marker state is now ${selectionRelUrl}`);
+    // console.log(`User chose ${selection}`);
+    console.log(`Marker state is now ${selection}`);
   }
 
   
   function handleClick(i) {
-    console.log('handleClick running!')
+    console.log(`Square ${i} clicked!`)
     const nextSquares = squares.slice();
     
     if(!squares[i]) {
@@ -115,7 +127,6 @@ export default function Board() {
         // />
       // );
       nextSquares[i] = true;
-
       // nextMark[i] = (
       //   <img src={marker} />
       // );
@@ -131,7 +142,6 @@ export default function Board() {
   function populateImages() {
     setSquares(Array(25).fill(null));
     const nextBoard = board.slice();
-
     let alreadyUsed = [];
     for(let i = 0; i < 25; i++) {
       let villagerNum = Math.floor(Math.random() * 391);
@@ -139,7 +149,6 @@ export default function Board() {
         villagerNum = Math.floor(Math.random() * 391);
       }
       alreadyUsed.push(villagerNum);
-
       const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`;
       nextBoard[i] = villagerUrl;
     }
@@ -153,7 +162,6 @@ export default function Board() {
     for(let i = 0; i < arr.length; i++) {
       let newName = await villagerName(arr[i]);
       nextNames[i] = newName;
-      console.log(newName);
     }
     setName(nextNames);
   }
@@ -191,7 +199,7 @@ export default function Board() {
         <Square value={squares[10]} title={name[10]} background={board[10]} onSquareClick={() => handleClick(10)} />
         <Square value={squares[11]} title={name[11]} background={board[11]} onSquareClick={() => handleClick(11)} />
         {/* Free space: */}
-        <Square value={squares[12]} onSquareClick={() => handleClick(12)} />
+        <Square value={squares[12]} title="FREE" onSquareClick={() => handleClick(12)} />
         <Square value={squares[13]} title={name[13]} background={board[13]} onSquareClick={() => handleClick(13)} />
         <Square value={squares[14]} title={name[14]} background={board[14]} onSquareClick={() => handleClick(14)} />
       </div>
@@ -213,16 +221,16 @@ export default function Board() {
       <Button className="shuffle" onButtonClick={() => populateImages()}>Shuffle</Button>
       <div className="marker-options">
         <ul>
-          <button><li choice={marker} onClick={() => markerPick(0)}>Apple</li></button>
-          <button><li choice={marker} onClick={() => markerPick(1)}>Cherry</li></button>
-          <button><li choice={marker} onClick={() => markerPick(2)}>Coconut</li></button>
-          <button><li choice={marker} onClick={() => markerPick(3)}>Orange</li></button>
-          <button><li choice={marker} onClick={() => markerPick(4)}>Peach</li></button>
-          <button><li choice={marker} onClick={() => markerPick(5)}>Pear</li></button>
+          <button><li onClick={() => markerPick(0)}>Apple</li></button>
+          <button><li onClick={() => markerPick(1)}>Cherry</li></button>
+          <button><li onClick={() => markerPick(2)}>Coconut</li></button>
+          <button><li onClick={() => markerPick(3)}>Orange</li></button>
+          <button><li onClick={() => markerPick(4)}>Peach</li></button>
+          <button><li onClick={() => markerPick(5)}>Pear</li></button>
         </ul>
       </div>
-      <img src={marker} alt="game marker" />
-      <img src={orangeImg} alt="game marker" />
+      {/* <img src={marker} alt="game marker" /> */}
+      {/* <img src={orangeImg} alt="game marker" /> */}
       <Marker selection={marker} />
     </div>
   );
