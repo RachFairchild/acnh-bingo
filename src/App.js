@@ -48,7 +48,7 @@ function Square({value, marker, title, background, onSquareClick, currentVillage
         style={{backgroundImage: `url(${background})`}}
         alt={title}
       >
-        <img src={marker} alt=" " />
+        {/* <img src={marker} alt=" " /> */}
 
         {Marker}
         <h1 
@@ -130,7 +130,6 @@ export default function Board() {
   
   function populateImages() {
     setSquares(Array(25).fill(null));
-    //alreadyUsed = null;
     const nextBoard = board.slice();
 
     let alreadyUsed = [];
@@ -146,6 +145,7 @@ export default function Board() {
     }
     shuffleBoard(nextBoard);
     populateNames(alreadyUsed);
+    alreadyUsed = [];
   }
 
   async function populateNames(arr) {
