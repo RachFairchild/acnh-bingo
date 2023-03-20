@@ -199,7 +199,7 @@ export default function Board() {
         <Square value={squares[10]} title={name[10]} background={board[10]} onSquareClick={() => handleClick(10)} />
         <Square value={squares[11]} title={name[11]} background={board[11]} onSquareClick={() => handleClick(11)} />
         {/* Free space: */}
-        <Square value={squares[12]} title="FREE" onSquareClick={() => handleClick(12)} />
+        <Square value={squares[12]} title="FREE" background={`https://i0.wp.com/mynintendonews.com/wp-content/uploads/2019/03/animal_crossing_tom_nook_bells.jpg?fit=960%2C960&ssl=1`} onSquareClick={() => handleClick(12)} />
         <Square value={squares[13]} title={name[13]} background={board[13]} onSquareClick={() => handleClick(13)} />
         <Square value={squares[14]} title={name[14]} background={board[14]} onSquareClick={() => handleClick(14)} />
       </div>
