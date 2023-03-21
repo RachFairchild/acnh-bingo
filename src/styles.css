@@ -77,7 +77,19 @@ body {
   padding: 0;
   text-align: center;
   width: 128px;
+  position: relative;
+  background-size: cover;
 }
+/* 
+.square::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+} */
 
 .villagerName {
   font-size: 28px;
@@ -91,6 +103,7 @@ body {
 .activeMarkers {
   width: 125px;
   height: 125px;
+  opacity: 1;
 }
 
 @media screen and (max-width: 675px) {
@@ -115,6 +128,8 @@ body {
     padding: 0;
     text-align: center;
     width: 64px;
+    position: relative;
+    background-size: cover;
   }
 
   .villagerName {
@@ -128,6 +143,7 @@ body {
   .activeMarkers {
     width: 60px;
     height: 60px;
+    opacity: 1 !important;
   }
 }
 

@@ -8,20 +8,31 @@ import peachImg from "./img/peach.png";
 import pearImg from "./img/pear.png";
 
 // TODO:
-//   - Add default marker
 //   - Turn marker buttons into the images they represent
-//   - When user clicks box, make background slightly opaque??
 
-function Square({marker, onSquareClick, background, title, selection, value}) {  
+function Square({onSquareClick, background, title, selection, value}) {  
   
   return (
     <div>
       <button 
-        className="square" 
+        className="square"
         onClick={onSquareClick}
-        style={{backgroundImage: `url(${background})`}}
+        style={{
+          backgroundImage: `url(${background})`,
+        }}
         alt={title}
       >
+        <div 
+          className="pseudoElementHack"
+          style={{
+            position: `absolute`,
+            top: `0px`,
+            right: `0px`,
+            bottom: `0px`,
+            left: `0px`,
+            backgroundColor: value === true ? `rgba(255, 255, 255, 0.5)`: `rgba(255, 255, 255, 0)`,
+          }}
+        />
         <img 
           className="activeMarkers"
           src={selection}
@@ -30,7 +41,7 @@ function Square({marker, onSquareClick, background, title, selection, value}) {
             zIndex: 10,
             float: 'left',
             display: value === true ? 'block' : 'none',
-            position: 'absolute'
+            position: 'absolute',
           }}
           width='125px'
           height='125px'
