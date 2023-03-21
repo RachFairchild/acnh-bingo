@@ -8,9 +8,12 @@ import peachImg from "./img/peach.png";
 import pearImg from "./img/pear.png";
 
 // TODO:
-//   - Make it purty
+//   - Add default marker
+//   - Turn marker buttons into the images they represent
+//   - When user clicks box, make background slightly opaque??
 
-function Square({value, selection, title, background, onSquareClick}) {  
+function Square({marker, onSquareClick, background, title, selection, value}) {  
+  
   return (
     <div>
       <button 
@@ -59,7 +62,7 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
-  const [marker, setMarker] = useState({appleImg}); // `appleImg`
+  const [marker, setMarker] = useState(appleImg);
 
   function markerPick(i) {
     console.log('markerPick is running...');
