@@ -9,10 +9,8 @@ import orangeImg from "./img/orange.png";
 
 
 // TODO:
-//   - Turn ':)' into fruits!
 //   - Add option to choose marker
 //   - Make it purty
-//   - Add alt text to villager images when generated
 
 function Marker(marker, selection) {
   // console.log(`Marker component running: src = ${marker.selection}`);
@@ -54,8 +52,8 @@ function Square({value, marker, squares, selection, title, background, onSquareC
       >
         <img 
           className="activeMarkers"
-          src={orangeImg} 
-          alt=":)" 
+          src={orangeImg}
+          alt="BINGO marker" 
           style={{
             zIndex: 10,
             float: 'left',

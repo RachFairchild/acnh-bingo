@@ -88,6 +88,11 @@ body {
   margin-bottom: 0px;
 }
 
+.activeMarkers {
+  width: 125px;
+  height: 125px;
+}
+
 @media screen and (max-width: 675px) {
   .square {
     display: flex;
@@ -121,7 +126,8 @@ body {
   }
 
   .activeMarkers {
-    
+    width: 60px;
+    height: 60px;
   }
 }
 
