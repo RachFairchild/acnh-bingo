@@ -8,10 +8,13 @@ import peachImg from "./img/peach.png";
 import pearImg from "./img/pear.png";
 
 // TODO:
+//   - Center board, shuffle button, marker selectors
 //   - Turn marker buttons into the images they represent
+//   - Style shuffle button
+//   - Style "Bingo!" alert
+//   - White outline around fruit/new images?
 
 function Square({onSquareClick, background, title, selection, value}) {  
-  
   return (
     <div>
       <button 
@@ -23,14 +26,14 @@ function Square({onSquareClick, background, title, selection, value}) {
         alt={title}
       >
         <div 
-          className="pseudoElementHack"
+          className="opacityChanger"
           style={{
             position: `absolute`,
             top: `0px`,
             right: `0px`,
             bottom: `0px`,
             left: `0px`,
-            backgroundColor: value === true ? `rgba(255, 255, 255, 0.5)`: `rgba(255, 255, 255, 0)`,
+            backgroundColor: value === true ? `rgba(0,0,0, 0.60)`: `rgba(255, 255, 255, 0)`,
           }}
         />
         <img 
