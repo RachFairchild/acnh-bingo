@@ -12,8 +12,7 @@ import bellsImg from "./img/bells.png"
 import markerSprite from "./img/sprite.png"
 
 // TODO:
-//   - Center board, shuffle button, marker selectors
-//   - Turn marker buttons into the images they represent
+//   - Turn marker buttons into the images they represent (from sprite)
 //   - Style shuffle button
 //   - Style "Bingo!" alert
 
