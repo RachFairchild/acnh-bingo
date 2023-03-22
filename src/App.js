@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
-import appleImg from "./img/apple.png";
-import cherryImg from "./img/cherry.png";
-import coconutImg from "./img/coconut.png";
-import orangeImg from "./img/orange.png";
-import peachImg from "./img/peach.png";
-import pearImg from "./img/pear.png";
+import appleImg from "./img/Apple.png";
+import cherryImg from "./img/Cherry.png";
+import coconutImg from "./img/Coconut.png";
+import orangeImg from "./img/Orange.png";
+import peachImg from "./img/Peach.png";
+import pearImg from "./img/Pear.png";
+import fossilImg from "./img/Fossil.png"
+import giftImg from "./img/Gift.png"
+import bellsImg from "./img/bells.png"
 
 // TODO:
 //   - Center board, shuffle button, marker selectors
@@ -41,13 +44,8 @@ function Square({onSquareClick, background, title, selection, value}) {
           src={selection}
           alt="BINGO marker" 
           style={{
-            zIndex: 10,
-            float: 'left',
             display: value === true ? 'block' : 'none',
-            position: 'absolute',
           }}
-          width='125px'
-          height='125px'
         />
         <h1 
           className="villagerName"
@@ -80,7 +78,7 @@ export default function Board() {
 
   function markerPick(i) {
     console.log('markerPick is running...');
-    const options = [appleImg, cherryImg, coconutImg, orangeImg, peachImg, pearImg];
+    const options = [appleImg, cherryImg, coconutImg, orangeImg, peachImg, pearImg, bellsImg, fossilImg, giftImg];
     let selection = options[i];
     setMarker(selection);
     console.log(`marker state is now ${selection}`);
@@ -185,6 +183,9 @@ export default function Board() {
           <button><li onClick={() => markerPick(3)}>Orange</li></button>
           <button><li onClick={() => markerPick(4)}>Peach</li></button>
           <button><li onClick={() => markerPick(5)}>Pear</li></button>
+          <button><li onClick={() => markerPick(6)}>Bells</li></button>
+          <button><li onClick={() => markerPick(7)}>Fossil</li></button>
+          <button><li onClick={() => markerPick(8)}>Gift</li></button>
         </ul>
       </div>
     </div>

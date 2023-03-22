@@ -71,25 +71,15 @@ body {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 128px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
   width: 128px;
+  height: 128px;
   position: relative;
   background-size: cover;
 }
-/* 
-.square::before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: rgba(255, 255, 255, 0.5);
-} */
 
 .villagerName {
   font-size: 28px;
@@ -101,8 +91,11 @@ body {
 }
 
 .activeMarkers {
-  width: 125px;
-  height: 125px;
+  z-index: 10;
+  position: absolute;
+  flex-grow: 1;
+  width: 100px;
+  height: auto;
   opacity: 1;
 }
 
