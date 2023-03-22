@@ -15,7 +15,6 @@ import bellsImg from "./img/bells.png"
 //   - Turn marker buttons into the images they represent
 //   - Style shuffle button
 //   - Style "Bingo!" alert
-//   - White outline around fruit/new images?
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -155,7 +154,7 @@ export default function Board() {
         <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
         <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
         {/* Free space: */}
-        <Square value={squares[12]} title="FREE" background={`https://i0.wp.com/mynintendonews.com/wp-content/uploads/2019/03/animal_crossing_tom_nook_bells.jpg?fit=960%2C960&ssl=1`} selection={marker} onSquareClick={() => handleClick(12)} />
+        <Square value={squares[12]} title="FREE" background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} />
         <Square value={squares[13]} title={name[13]} background={board[13]} selection={marker} onSquareClick={() => handleClick(13)} />
         <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
       </div>
