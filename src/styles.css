@@ -44,6 +44,7 @@ code {
 
 ul {
   padding-left: 20px;
+  overflow: auto;
 }
 
 * {
@@ -56,24 +57,30 @@ body {
   padding: 0;
 }
 
+.entireBoard {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.boardContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  /* justify-content: center; */
+}
+
 .square {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  /* justify-items: flex-end; */
   align-items: center;
-  /* align-content: stretch; */
   background: #fff;
   background-image: none;
-  /* background-size: 128px; */
   border: 1px solid #999;
   float: left;
   font-size: 24px;
   line-height: 34px;
-  /* margin-right: -1px; */
-  /* margin-top: -1px; */
-  /* padding: 0; */
-  /* text-align: center; */
   width: 128px;
   height: 128px;
   position: relative;
@@ -93,7 +100,6 @@ body {
 .activeMarkers {
   z-index: 10;
   position: relative;
-  /* opacity: 1; */
   object-fit: none;
 }
 
@@ -144,10 +150,6 @@ body {
   display: table;
 }
 
-.status {
-  margin-bottom: 10px;
-}
-
 .game {
   display: flex;
   flex-direction: row;
@@ -157,12 +159,45 @@ body {
   margin-left: 20px;
 }
 
-.marker-options ul {
-  list-style-type: none;
+.buttonContainerContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:center;
+  align-items: center;
+  border: 2px solid green;
+  padding: 10px 10px;
+  margin: 25px 5%;
+  max-width: 90%;
+  height: auto;
+  overflow: auto;
 }
 
-.markerImage {
-  display: none;
-  width: 150px;
+.buttonContainer {
+  /* position: relative;
+  height: auto;
+  display: flex; */
+  padding: 10px;
+  margin: 20px;
 }
 
+.apple .cherry .coconut .orange .peach .pear .bells .fossil .gift {
+  /* background-image: url('./img/sprite.png'); */
+  /* background-image: url('./img/Apple.png');
+  background-repeat: no-repeat; */
+  padding: 5px 10px;
+}
+
+.title {
+  font-size: 4rem;
+  margin: 1%;
+}
+
+.status {
+  font-size: 2rem;
+  padding: 2% 0%;
+}
+
+.shuffle {
+  margin: 2%;
+  padding: 5% 10%;
+}
