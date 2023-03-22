@@ -93,7 +93,7 @@ export default function Board() {
       {name: 'pear', position: '-1002px -2108px', top: '117px', bottom: '0px', right: '0px', left: '5px', width: '310px', height: '350px', transform: 'scale(0.30)'},
       {name: 'bells', position: '-2115px -2492px', top: '110px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
       {name: 'fossil', position: '-2117px -408px', top: '115px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-      {name: 'gift', position: '-112px -241px', top: '90px', bottom: '0px', right: '7px', left: '0px', width: '310px', height: '600px', transform: 'scale(0.13)'}
+      {name: 'gift', position: '-648px -1280px', top: '255px', bottom: '0px', right: '0px', left: '12px', width: '450px', height: '636px', transform: 'scale(0.20)'}
     ];
     const options = [appleImg, cherryImg, coconutImg, orangeImg, peachImg, pearImg, bellsImg, fossilImg, giftImg];
     let selection = sprite[i];
