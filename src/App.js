@@ -9,6 +9,7 @@ import pearImg from "./img/Pear.png";
 import fossilImg from "./img/Fossil.png"
 import giftImg from "./img/Gift.png"
 import bellsImg from "./img/bells.png"
+import markerSprite from "./img/sprite.png"
 
 // TODO:
 //   - Center board, shuffle button, marker selectors
@@ -17,6 +18,7 @@ import bellsImg from "./img/bells.png"
 //   - Style "Bingo!" alert
 
 function Square({onSquareClick, background, title, selection, value}) {  
+  console.log(`Square component: ${selection.scale}`)
   return (
     <div>
       <button 
@@ -27,6 +29,7 @@ function Square({onSquareClick, background, title, selection, value}) {
         }}
         alt={title}
       >
+        <h1 className="villagerName">{title}</h1>
         <div 
           className="opacityChanger"
           style={{
@@ -40,17 +43,21 @@ function Square({onSquareClick, background, title, selection, value}) {
         />
         <img 
           className="activeMarkers"
-          src={selection}
+          // src={selection}
+          src={markerSprite}
           alt="BINGO marker" 
           style={{
             display: value === true ? 'block' : 'none',
+            objectPosition: `${selection.position}`,
+            top: `${selection.top}`,
+            bottom: `${selection.bottom}`,
+            right: `${selection.right}`,
+            left: `${selection.left}`,
+            width: `${selection.width}`,
+            height: `${selection.height}`,
+            transform: `${selection.transform}`,
           }}
         />
-        <h1 
-          className="villagerName"
-        >
-          {title}
-        </h1>
       </button>
     </div>
   );
@@ -73,12 +80,24 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
-  const [marker, setMarker] = useState(appleImg);
+  const [marker, setMarker] = useState({name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'});
 
   function markerPick(i) {
     console.log('markerPick is running...');
+    const sprite = [
+      {name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'cherry', position: '-1907px -2036px', top: '110px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'coconut', position: '-1029px -2588px', top: '115px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'orange', position: '-1023px -3082px', top: '117px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'peach', position: '-2138px -1535px', top: '117px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'pear', position: '-1002px -2108px', top: '117px', bottom: '0px', right: '0px', left: '5px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'bells', position: '-2115px -2492px', top: '110px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'fossil', position: '-2117px -408px', top: '115px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
+      {name: 'gift', position: '-112px -241px', top: '90px', bottom: '0px', right: '7px', left: '0px', width: '310px', height: '600px', transform: 'scale(0.13)'}
+    ];
     const options = [appleImg, cherryImg, coconutImg, orangeImg, peachImg, pearImg, bellsImg, fossilImg, giftImg];
-    let selection = options[i];
+    let selection = sprite[i];
+    // let selection = options[i];
     setMarker(selection);
     console.log(`marker state is now ${selection}`);
   }
