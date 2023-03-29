@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "FinkHeavy";
+  src: local("FinkHeavy"), 
+    url(./fonts/FinkHeavy.ttf) format('ttf');
+}
+
+.font-face-fh {
+  font-family: "FinkHeavy";
+}
+
 * {
   box-sizing: border-box;
 }
@@ -188,6 +198,7 @@ body {
 }
 
 .title {
+  font-family: 'FinkHeavy';
   font-size: 4rem;
   margin: 1%;
 }
