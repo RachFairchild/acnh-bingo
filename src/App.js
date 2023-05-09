@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import { useState } from 'react';
 // import appleImg from "./img/Apple.png";
 // import cherryImg from "./img/Cherry.png";
