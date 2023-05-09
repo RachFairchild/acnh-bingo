@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
-import appleImg from "./img/Apple.png";
-import cherryImg from "./img/Cherry.png";
-import coconutImg from "./img/Coconut.png";
-import orangeImg from "./img/Orange.png";
-import peachImg from "./img/Peach.png";
-import pearImg from "./img/Pear.png";
-import fossilImg from "./img/Fossil.png"
+// import appleImg from "./img/Apple.png";
+// import cherryImg from "./img/Cherry.png";
+// import coconutImg from "./img/Coconut.png";
+// import orangeImg from "./img/Orange.png";
+// import peachImg from "./img/Peach.png";
+// import pearImg from "./img/Pear.png";
+// import fossilImg from "./img/Fossil.png"
 import giftImg from "./img/Gift.png"
-import bellsImg from "./img/bells.png"
+// import bellsImg from "./img/bells.png"
 import markerSprite from "./img/sprite.png"
 
 // TODO:
