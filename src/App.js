@@ -12,13 +12,6 @@ import giftImg from "./img/Gift.png"
 // import bellsImg from "./img/bells.png"
 import markerSprite from "./img/sprite.png"
 
-// TODO:
-//   - Turn marker buttons into the images they represent (from sprite)
-//   - Style shuffle button
-//   - Style "Bingo!" alert (confetti?)
-//   - Get font to work
-//   - Add simple header and footer
-
 function Square({onSquareClick, background, title, selection, value}) {  
   console.log(`Square component: ${selection.scale}`)
   return (
