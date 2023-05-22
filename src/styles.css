@@ -140,6 +140,11 @@ ul {
   background-size: cover;
 }
 
+.titleSquare {
+  font-size: 400%;
+  text-align:center;
+}
+
 .villagerName {
   position: absolute;
   font-size: 28px;
