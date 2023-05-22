@@ -1,6 +1,10 @@
 // import React, { Component } from 'react';
 import React from 'react';
 import { useState } from 'react';
+// Bootstrap:
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import appleImg from "./img/Apple.png";
 // import cherryImg from "./img/Cherry.png";
 // import coconutImg from "./img/Coconut.png";
@@ -57,15 +61,15 @@ function Square({onSquareClick, background, title, selection, value}) {
   );
 }
 
-function Button({onButtonClick}) {
+function ShuffleButton({onButtonClick}) {
   return (
-    <div>
-        <button 
-            className="shuffle" 
-            onClick={onButtonClick}
-        >
-            Shuffle!
-        </button>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button 
+          className="shuffle btn btn-primary" 
+          onClick={onButtonClick}
+      >
+          Shuffle!
+      </button>
     </div>
   );
 }
@@ -188,37 +192,37 @@ export default function Board() {
         </div>
       </div>
       <div className="status">{status}</div>
-      <Button className="shuffle" onButtonClick={() => populateImages()}>Shuffle</Button>
+      <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
       
 
 
 
       <div className="buttonContainerContainer">
-          <button onClick={() => markerPick(0)} className="buttonContainer">
+          <button onClick={() => markerPick(0)} className="buttonContainer btn btn-outline-primary btn-default">
             {/* <img src={appleImg} className="apple" /> */} Apple
           </button>
-          <button onClick={() => markerPick(1)} className="buttonContainer">
+          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={cherryImg} className="cherry" /> */} Cherry
           </button>
-          <button onClick={() => markerPick(2)} className="buttonContainer">
+          <button onClick={() => markerPick(2)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={coconutImg} className="coconut"/> */} Coconut
           </button>
-          <button onClick={() => markerPick(3)} className="buttonContainer">
+          <button onClick={() => markerPick(3)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={orangeImg} className="orange" /> */} Orange
           </button>
-          <button onClick={() => markerPick(4)} className="buttonContainer">
+          <button onClick={() => markerPick(4)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={peachImg} className="peach" /> */} Peach
           </button>
-          <button onClick={() => markerPick(5)} className="buttonContainer">
+          <button onClick={() => markerPick(5)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={pearImg} className="pear" /> */} Pear
           </button>
-          <button onClick={() => markerPick(6)} className="buttonContainer">
+          <button onClick={() => markerPick(6)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={bellsImg} className="bells" /> */} Bells
           </button>
-          <button onClick={() => markerPick(7)} className="buttonContainer">
+          <button onClick={() => markerPick(7)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={fossilImg} className="fossil" /> */} Fossil
           </button>
-          <button onClick={() => markerPick(8)} className="buttonContainer">
+          <button onClick={() => markerPick(8)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={giftImg} className="gift" /> */} Gift
           </button>
       </div>
