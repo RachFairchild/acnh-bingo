@@ -222,31 +222,144 @@ export default function Board() {
                 transform: `scale(2.00)`,
               }}
             /></div>} 
-            {`Apple`}
+            Apple
           </button>
-          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={cherryImg} className="cherry" /> */} Cherry
+          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-outline-primary btn-default">
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Cherry BINGO marker" 
+              style={{
+                top: `-229px`,
+                left: `-318px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} 
+            Cherry
           </button>
           <button onClick={() => markerPick(2)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={coconutImg} className="coconut"/> */} Coconut
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Coconut BINGO marker" 
+              style={{
+                top: `-355px`,
+                left: `13px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Coconut
           </button>
           <button onClick={() => markerPick(3)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={orangeImg} className="orange" /> */} Orange
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Orange BINGO marker" 
+              style={{
+                top: `-460px`,
+                left: `150px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Orange
           </button>
           <button onClick={() => markerPick(4)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={peachImg} className="peach" /> */} Peach
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Orange BINGO marker" 
+              style={{
+                top: `-92px`,
+                left: `-262px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Peach
           </button>
           <button onClick={() => markerPick(5)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={pearImg} className="pear" /> */} Pear
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Coconut BINGO marker" 
+              style={{
+                top: `-233px`,
+                left: `18px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Pear
           </button>
           <button onClick={() => markerPick(6)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={bellsImg} className="bells" /> */} Bells
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Orange BINGO marker" 
+              style={{
+                top: `-343px`,
+                left: `-367px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Bells
           </button>
           <button onClick={() => markerPick(7)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={fossilImg} className="fossil" /> */} Fossil
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Apple BINGO marker" 
+              style={{
+                top: `187px`,
+                left: `-262px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} Fossil
           </button>
           <button onClick={() => markerPick(8)} className="buttonContainer btn btn-outline-primary">
-            {/* <img src={giftImg} className="gift" /> */} Gift
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Orange BINGO marker" 
+              style={{
+                top: `-92px`,
+                left: `-52px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(1.10)`,
+              }}
+            /></div>} Gift
           </button>
       </div>
     </div>
