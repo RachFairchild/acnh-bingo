@@ -28,7 +28,7 @@ function Square({onSquareClick, background, title, selection, value}) {
         }}
         alt={title}
       >
-        <h1 className="villagerName">{title}</h1>
+        <h1 className="villagerName clearfix">{title}</h1>
         <div 
           className="opacityChanger"
           style={{

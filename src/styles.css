@@ -20,6 +20,12 @@ body {
   padding: 0;
 }
 
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 #header, #footer {
   display: flex;
   flex-flow: row nowrap;
@@ -148,7 +154,7 @@ ul {
 .villagerName {
   position: absolute;
   font-size: 28px;
-  overflow: auto;
+  /* overflow: auto; */
   color: #000000;
   -webkit-text-fill-color: #000000;
   -webkit-text-stroke: 0.5px white;
