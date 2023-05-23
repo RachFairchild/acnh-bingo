@@ -4,6 +4,8 @@ import { useState } from 'react';
 // Bootstrap:
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// Confetti:
+import ConfettiExplosion from 'react-confetti-explosion';
 
 // import appleImg from "./img/Apple.png";
 // import cherryImg from "./img/Cherry.png";
@@ -17,7 +19,6 @@ import giftImg from "./img/Gift.png"
 import markerSprite from "./img/sprite.png"
 
 function Square({onSquareClick, background, title, selection, value}) {  
-  console.log(`Square component: ${selection.scale}`)
   return (
     <div>
       <button 
@@ -79,6 +80,7 @@ export default function Board() {
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
   const [marker, setMarker] = useState({name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'});
+  const [isExploding, setIsExploding] = useState(false);
 
   const sprite = [
     {name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
@@ -148,6 +150,7 @@ export default function Board() {
   let status;
   if(winner) {
     status = "BINGO!"
+    // setIsExploding(true);
   }
 
   return (
@@ -195,15 +198,31 @@ export default function Board() {
           <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
         </div>
       </div>
+      {/* <div>{isExploding && <ConfettiExplosion />}</div> */}
       <div className="status">{status}</div>
       <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
       
 
 
 
-      <div className="buttonContainerContainer">
+      <div className="buttonContainerContainer mx-auto col-7">
           <button onClick={() => markerPick(0)} className="buttonContainer btn btn-outline-primary btn-default">
-            {/* <img src={appleImg} className="apple" /> */} Apple
+            {<div className="crop">
+              <img 
+              className="buttonMarker"
+              src={markerSprite}
+              alt="Apple BINGO marker" 
+              style={{
+                top: `38px`,
+                left: `-262px`,
+                width: `310px`,
+                height: `320px`,
+                objectFit: `cover`,
+                position: `absolute`,
+                transform: `scale(2.00)`,
+              }}
+            /></div>} 
+            {`Apple`}
           </button>
           <button onClick={() => markerPick(1)} className="buttonContainer btn btn-outline-primary">
             {/* <img src={cherryImg} className="cherry" /> */} Cherry

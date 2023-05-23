@@ -167,6 +167,22 @@ ul {
   object-fit: none;
 }
 
+/* .buttonMarker {
+  z-index: 10;
+  /* position: relative;
+  object-fit: none; */ /*
+  object-fit: cover;
+  position: absolute;
+} */
+
+.crop {
+  aspect-ratio: 2/1;
+  overflow: hidden; /* image boundaries */
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+
 @media screen and (max-width: 675px) {
   .square {
     display: flex;
@@ -235,23 +251,26 @@ ul {
   margin: 25px 5%;
   max-width: 90%;
   height: auto;
-  overflow: auto;
 }
 
 .buttonContainer {
   /* position: relative;
   height: auto;
   display: flex; */
-  padding: 10px;
+  /* padding: 10px;
   margin: 20px;
   color: #95f2a7;
+  width: 125px;
+  height: 125px; */
+  margin: 10px;
 }
 
 .apple .cherry .coconut .orange .peach .pear .bells .fossil .gift {
   /* background-image: url('./img/sprite.png'); */
-  /* background-image: url('./img/Apple.png');
-  background-repeat: no-repeat; */
+  /* background-image: url('./img/apple.png'); */
+  /* background-repeat: no-repeat; */
   padding: 5px 10px;
+  z-index: 11;
 }
 
 .title {
