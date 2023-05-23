@@ -11,6 +11,11 @@
     manifest.json provides metadata used when your web app is added to the
     homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
   -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+
+
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
   <title>BINGO Hopper</title>
@@ -20,13 +25,11 @@
   
   <header id="header">
     <div id="headerContent">
-      <h1>
-        <div class="header-logo"></div>
-        <img src="" alt="">
-        <img src="../src/img/header-logo-2.png" alt="BINGO Hopper">
-
-      </h1>
-      <p>An <i>Animal Crossing: New Horizons</i> BINGO App</p>
+      <div id="headerLeft">
+        <img src="./favicon.ico">
+        <h1>BINGO Hopper</h1>
+      </div>
+      <span>An <i>Animal Crossing: New Horizons</i> BINGO App</span>
     </div>
   </header>
 
