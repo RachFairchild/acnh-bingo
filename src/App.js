@@ -138,6 +138,7 @@ export default function Board() {
   }
 
   async function villagerName(villagerID) {
+    // Add catch
     const response = await fetch(`http://acnhapi.com/v1/villagers/${villagerID}`);
     let data = await response.json();
     const currentVillager = data.name["name-USen"];
