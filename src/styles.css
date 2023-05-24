@@ -47,7 +47,7 @@ body {
 
 #header {
   margin-bottom: 50px;
-  padding-top: 7px;
+  padding: 7px 0;
   box-shadow: 1px 0px 3px #007c74a2;
 }
 
@@ -81,6 +81,7 @@ body {
   font-family: 'Tsukimi Rounded', sans-serif;
   background: #3A3987;
   background: linear-gradient(to right, #3A3987 0%, #726FD2 71%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
@@ -93,6 +94,16 @@ body {
 #headerLeft > h1 {
   margin-bottom: 0px;
   padding: 0 15px;
+}
+
+#headerLeft > img {
+  transition: transform 0.5s ease;
+  transform: rotate(0turn);
+}
+
+#headerLeft:hover > img {
+  transition: transform 0.5s ease;
+  transform: rotate(0.90turn);
 }
 
 h1 {
@@ -140,12 +151,12 @@ ul {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
 .boardContainer {
   display: flex;
   flex-flow: row nowrap;
-  /* justify-content: center; */
 }
 
 .square {
