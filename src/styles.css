@@ -8,6 +8,20 @@ body {
   font-family: 'Pangolin', cursive;  
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(
+    135deg,
+    hsl(0deg 0% 100%) 0%,
+    hsl(300deg 100% 100%) 0%,
+    hsl(300deg 100% 100%) 1%,
+    hsl(300deg 100% 100%) 3%,
+    hsl(300deg 100% 100%) 8%,
+    hsl(0deg 0% 100%) 50%,
+    hsl(239deg 43% 94%) 92%,
+    hsl(238deg 43% 89%) 97%,
+    hsl(237deg 43% 83%) 99%,
+    hsl(236deg 43% 78%) 100%,
+    hsl(234deg 43% 72%) 100%
+  );
 }
 
 .clearfix:after {
@@ -17,7 +31,6 @@ body {
 }
 
 #header, #footer {
-  font-family: 'Pangolin', cursive;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -25,11 +38,11 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 90px;
+  height: 70px;
   background-color: #a4d4a2;
   color: #5653ab;
   background: rgb(204,241,203);
-  background: linear-gradient(90deg, rgba(204,241,203,1) 0%, rgba(219,253,255,1) 100%);
+  background: linear-gradient(140deg, rgba(204,241,203,1) 6%, rgba(213,245,222,1) 21%, rgba(166,241,187,1) 93%);
 }
 
 #header {
@@ -42,6 +55,7 @@ body {
   margin-top: 50px;
   height: 40px;
   font-size: x-small;
+  box-shadow: 1px 0px 5px #007c744d;
 }
 
 #footer a {
@@ -64,6 +78,11 @@ body {
 }
 
 #headerLeft {
+  font-family: 'Tsukimi Rounded', sans-serif;
+  background: #3A3987;
+  background: linear-gradient(to right, #3A3987 0%, #726FD2 71%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -235,10 +254,15 @@ ul {
   display: flex;
   flex-flow: row wrap;
   justify-content:center;
-  align-items: center;
+  /* align-items: center;
   border: 2px solid #f8eebb;
   border-radius: 10px;
-  background-color: #f8eebb;
+  background-color: #f8eebb; */
+  background-color: #f8f9fa;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #726fd2, #3a3987);
   padding: 10px 10px;
   margin: 39px 5% 20px;
   max-width: 90%;
@@ -246,14 +270,6 @@ ul {
 }
 
 .buttonContainer {
-  /* position: relative;
-  height: auto;
-  display: flex; */
-  /* padding: 10px;
-  margin: 20px;
-  color: #95f2a7;
-  width: 125px;
-  height: 125px; */
   margin: 10px;
 }
 

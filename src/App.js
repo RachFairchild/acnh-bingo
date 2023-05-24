@@ -195,7 +195,7 @@ export default function Board() {
 
 
       <div className="buttonContainerContainer mx-auto col-7">
-          <button onClick={() => markerPick(0)} className="buttonContainer btn btn-outline-primary btn-default">
+          <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -213,7 +213,7 @@ export default function Board() {
             /></div>} 
             Apple
           </button>
-          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-outline-primary btn-default">
+          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-light btn-default">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -231,7 +231,7 @@ export default function Board() {
             /></div>} 
             Cherry
           </button>
-          <button onClick={() => markerPick(2)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(2)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -248,7 +248,7 @@ export default function Board() {
               }}
             /></div>} Coconut
           </button>
-          <button onClick={() => markerPick(3)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(3)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -265,7 +265,7 @@ export default function Board() {
               }}
             /></div>} Orange
           </button>
-          <button onClick={() => markerPick(4)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(4)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -282,7 +282,7 @@ export default function Board() {
               }}
             /></div>} Peach
           </button>
-          <button onClick={() => markerPick(5)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(5)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -299,7 +299,7 @@ export default function Board() {
               }}
             /></div>} Pear
           </button>
-          <button onClick={() => markerPick(6)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(6)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -316,7 +316,7 @@ export default function Board() {
               }}
             /></div>} Bells
           </button>
-          <button onClick={() => markerPick(7)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(7)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
@@ -333,7 +333,7 @@ export default function Board() {
               }}
             /></div>} Fossil
           </button>
-          <button onClick={() => markerPick(8)} className="buttonContainer btn btn-outline-primary">
+          <button onClick={() => markerPick(8)} className="buttonContainer btn btn-light">
             {<div className="crop">
               <img 
               className="buttonMarker"
