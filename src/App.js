@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import giftImg from "./img/Gift.png"
-import markerSprite from "./img/sprite.png"
+import markerSprite from "./img/sprite-2.png"
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -37,12 +37,12 @@ function Square({onSquareClick, background, title, selection, value}) {
           style={{
             display: value === true ? 'block' : 'none',
             objectPosition: `${selection.position}`,
+            width: `${selection.width}`,
+            height: `${selection.height}`,
             top: `${selection.top}`,
             bottom: `${selection.bottom}`,
             right: `${selection.right}`,
             left: `${selection.left}`,
-            width: `${selection.width}`,
-            height: `${selection.height}`,
             transform: `${selection.transform}`,
           }}
         />
@@ -68,19 +68,19 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
-  const [marker, setMarker] = useState({name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'});
+  const [marker, setMarker] = useState({name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'});
   const [isExploding, setIsExploding] = useState(false);
 
   const sprite = [
-    {name: 'apple', position: '-1679px -966px', top: '110px', bottom: '0px', right: '4px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'cherry', position: '-1907px -2036px', top: '110px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'coconut', position: '-1029px -2588px', top: '115px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'orange', position: '-1023px -3082px', top: '117px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'peach', position: '-2138px -1535px', top: '117px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'pear', position: '-1002px -2108px', top: '117px', bottom: '0px', right: '0px', left: '5px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'bells', position: '-2115px -2492px', top: '110px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'fossil', position: '-2117px -408px', top: '115px', bottom: '0px', right: '0px', left: '0px', width: '310px', height: '350px', transform: 'scale(0.30)'},
-    {name: 'gift', position: '-648px -1280px', top: '255px', bottom: '0px', right: '0px', left: '12px', width: '450px', height: '636px', transform: 'scale(0.20)'}
+    {name: 'apple', position: '-10px -10px', width: '527px', height: '576px', top: '230px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.3)'},
+    {name: 'cherry', position: '-10px -2610px', width: '519px', height: '691px', top: '290px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.25)'},
+    {name: 'coconut', position: '-10px -1256px', width: '501px', height: '642px', top: '266px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.25)'},
+    {name: 'orange', position: '-10px -606px', width: '534px', height: '630px', top: '264px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.22)'},
+    {name: 'peach', position: '-10px -4082px', width: '786px', height: '881px', top: '380px', bottom: '0px', right: '4px', left: '-5px', transform: 'scale(0.19)'},
+    {name: 'pear', position: '-10px -3321px', width: '562px', height: '741px', top: '315px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.21)'},
+    {name: 'bells', position: '-10px -1918px', width: '628px', height: '672px', top: '275px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.2)'},
+    {name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'},
+    {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
   function markerPick(i) {
@@ -191,9 +191,6 @@ export default function Board() {
       <div className="status">{status}</div>
       <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
       
-
-
-
       <div className="buttonContainerContainer mx-auto col-7">
           <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
             {<div className="crop">
@@ -202,13 +199,10 @@ export default function Board() {
               src={markerSprite}
               alt="Apple BINGO marker" 
               style={{
-                top: `38px`,
-                left: `-262px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-25px -25px`,
+                width: `527px`,
+                height: `576px`,
               }}
             /></div>} 
             Apple
@@ -220,13 +214,10 @@ export default function Board() {
               src={markerSprite}
               alt="Cherry BINGO marker" 
               style={{
-                top: `-229px`,
-                left: `-318px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-18px -580px`,
+                width: `440px`,
+                height: `auto`,
               }}
             /></div>} 
             Cherry
@@ -238,13 +229,10 @@ export default function Board() {
               src={markerSprite}
               alt="Coconut BINGO marker" 
               style={{
-                top: `-355px`,
-                left: `13px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-8px -268px`,
+                width: `420px`,
+                height: `auto`,
               }}
             /></div>} Coconut
           </button>
@@ -255,13 +243,10 @@ export default function Board() {
               src={markerSprite}
               alt="Orange BINGO marker" 
               style={{
-                top: `-460px`,
-                left: `150px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-13px -130px`,
+                width: `410px`,
+                height: `auto`,
               }}
             /></div>} Orange
           </button>
@@ -270,15 +255,12 @@ export default function Board() {
               <img 
               className="buttonMarker"
               src={markerSprite}
-              alt="Orange BINGO marker" 
+              alt="Peach BINGO marker" 
               style={{
-                top: `-92px`,
-                left: `-262px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-26px -695px`,
+                width: `340px`,
+                height: `auto`,
               }}
             /></div>} Peach
           </button>
@@ -287,15 +269,12 @@ export default function Board() {
               <img 
               className="buttonMarker"
               src={markerSprite}
-              alt="Coconut BINGO marker" 
+              alt="Pear BINGO marker" 
               style={{
-                top: `-233px`,
-                left: `18px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-13px -630px`,
+                width: `380px`,
+                height: `auto`,
               }}
             /></div>} Pear
           </button>
@@ -304,15 +283,12 @@ export default function Board() {
               <img 
               className="buttonMarker"
               src={markerSprite}
-              alt="Orange BINGO marker" 
+              alt="Bells BINGO marker" 
               style={{
-                top: `-343px`,
-                left: `-367px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-8px -345px`,
+                width: `360px`,
+                height: `auto`,
               }}
             /></div>} Bells
           </button>
@@ -321,15 +297,12 @@ export default function Board() {
               <img 
               className="buttonMarker"
               src={markerSprite}
-              alt="Apple BINGO marker" 
+              alt="Fossil BINGO marker" 
               style={{
-                top: `187px`,
-                left: `-262px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(2.00)`,
+                objectPosition: `-20px -460px`,
+                width: `130px`,
+                height: `auto`,
               }}
             /></div>} Fossil
           </button>
@@ -337,49 +310,18 @@ export default function Board() {
             {<div className="crop">
               <img 
               className="buttonMarker"
-              src={markerSprite}
-              alt="Orange BINGO marker" 
+              src={giftImg}
+              alt="Gift BINGO marker" 
               style={{
-                top: `-92px`,
-                left: `-52px`,
-                width: `310px`,
-                height: `320px`,
                 objectFit: `cover`,
-                position: `absolute`,
-                transform: `scale(1.10)`,
+                objectPosition: `0px -7px`,
+                width: `100px`,
+                height: `auto`,
               }}
             /></div>} Gift
           </button>
       </div>
     </div>
-
-      /* <div className="marker-options">
-        <ul>
-          <button><li onClick={() => markerPick(0)}><div 
-          src={markerSprite} 
-          style={{
-            objectPosition: `${sprite[0].position}`,
-            top: `${sprite[0].top}`,
-            bottom: `${sprite[0].bottom}`,
-            right: `${sprite[0].right}`,
-            left: `${sprite[0].left}`,
-            width: `${sprite[0].width}`,
-            height: `${sprite[0].height}`,
-            transform: `${sprite[0].transform}`,
-          }}/>{sprite[0].name}</li></button>
-          <button onClick={() => markerPick(1)} class="cherryContainer">
-            <img src={markerSprite} className="cherry" border="0" />
-          </button>
-          <button><li onClick={() => markerPick(2)}>Coconut</li></button>
-          <button><li onClick={() => markerPick(3)}>Orange</li></button>
-          <button><li onClick={() => markerPick(4)}>Peach</li></button>
-          <button><li onClick={() => markerPick(5)}>Pear</li></button>
-          <button><li onClick={() => markerPick(6)}>Bells</li></button>
-          <button><li onClick={() => markerPick(7)}>Fossil</li></button>
-          <button><li onClick={() => markerPick(8)}>Gift</li></button>
-        </ul>
-      </div>
-    </div> */
   );
 }
 
@@ -407,4 +349,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-

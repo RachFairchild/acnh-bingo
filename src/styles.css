@@ -173,7 +173,6 @@ ul {
 .villagerName {
   position: absolute;
   font-size: 28px;
-  /* overflow: auto; */
   color: #000000;
   -webkit-text-fill-color: #000000;
   -webkit-text-stroke: 0.5px white;
@@ -184,14 +183,6 @@ ul {
   z-index: 10;
   position: relative;
   object-fit: none;
-}
-
-.crop {
-  aspect-ratio: 2/1;
-  overflow: hidden; /* image boundaries */
-  position: relative;
-  width: 90px;
-  height: 90px;
 }
 
 @media screen and (max-width: 675px) {
@@ -254,35 +245,27 @@ ul {
   display: flex;
   flex-flow: row wrap;
   justify-content:center;
-  /* align-items: center;
-  border: 2px solid #f8eebb;
-  border-radius: 10px;
-  background-color: #f8eebb; */
+  align-items: center;
+  padding: 10px;
+  margin: 40px;
+  /* border styling: */
   background-color: #f8f9fa;
   border: 10px solid;
   border-image-slice: 1;
   border-width: 5px;
   border-image-source: linear-gradient(to left, #726fd2, #3a3987);
-  padding: 10px 10px;
-  margin: 39px 5% 20px;
-  max-width: 90%;
-  height: auto;
 }
 
 .buttonContainer {
   margin: 10px;
 }
 
-.buttonMarker {
-  
-}
-
-.apple .cherry .coconut .orange .peach .pear .bells .fossil .gift {
-  /* background-image: url('./img/sprite.png'); */
-  /* background-image: url('./img/apple.png'); */
-  /* background-repeat: no-repeat; */
-  padding: 5px 10px;
-  z-index: 11;
+.crop {
+  aspect-ratio: 2/1;
+  overflow: hidden; /* image boundaries */
+  position: relative;
+  width: 90px;
+  height: 90px;
 }
 
 .title {
@@ -298,5 +281,5 @@ ul {
 
 .shuffle {
   margin: 2%;
-  padding: 5% 10%;
+  padding: 20px 10px;
 }
