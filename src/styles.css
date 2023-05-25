@@ -99,6 +99,7 @@ body {
 #headerLeft > img {
   transition: transform 0.5s ease;
   transform: rotate(0turn);
+  transition-delay: 0.25s;
 }
 
 #headerLeft:hover > img {
@@ -264,7 +265,7 @@ ul {
   border: 10px solid;
   border-image-slice: 1;
   border-width: 5px;
-  border-image-source: linear-gradient(to left, #726fd2, #3a3987);
+  border-image-source: linear-gradient(to left, #7ae5ea, #3a3987);
 }
 
 .buttonContainer {
