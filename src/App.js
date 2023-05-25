@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import giftImg from "./img/Gift.png"
 import markerSprite from "./img/sprite-2.png"
+import './fonts/FinkHeavy.ttf';
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -53,7 +54,7 @@ function Square({onSquareClick, background, title, selection, value}) {
 
 function ShuffleButton({onButtonClick}) {
   return (
-    <div class="d-grid gap-2 col-6 mx-auto">
+    <div className="d-grid gap-2 col-6 mx-auto">
       <button 
           className="shuffle btn btn-primary" 
           onClick={onButtonClick}
@@ -69,7 +70,6 @@ export default function Board() {
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
   const [marker, setMarker] = useState({name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'});
-  const [isExploding, setIsExploding] = useState(false);
 
   const sprite = [
     {name: 'apple', position: '-10px -10px', width: '527px', height: '576px', top: '230px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.3)'},

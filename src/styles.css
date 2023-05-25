@@ -1,11 +1,15 @@
 @import "bootstrap";
+@font-face {
+  font-family: 'FinkHeavy';
+  src: url(./fonts/FinkHeavy.ttf);
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Pangolin', cursive;  
+  font-family: 'FinkHeavy', 'Pangolin', cursive;  
   margin: 0;
   padding: 0;
   background-image: linear-gradient(
@@ -78,7 +82,7 @@ body {
 }
 
 #headerLeft {
-  font-family: 'Tsukimi Rounded', sans-serif;
+  font-family: 'FinkHeavy', 'Tsukimi Rounded', sans-serif;
   background: #3A3987;
   background: linear-gradient(to right, #3A3987 0%, #726FD2 71%);
   background-clip: text;
@@ -180,6 +184,7 @@ ul {
 .titleSquare {
   font-size: 400%;
   text-align:center;
+  font-family: 'FinkHeavy';
 }
 
 .villagerName {
