@@ -139,12 +139,12 @@ export default function Board() {
   let status;
   if(winner) {
     status = "BINGO!"
-    // setIsExploding(true);
   }
 
   return (
     <div className="entireBoard">
       <div className="boardContainer">
+        <div className="confetti-container">{status && <ConfettiExplosion />}</div>
         <div className="board-row">
           <h1 className="titleSquare">B</h1>
           <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
