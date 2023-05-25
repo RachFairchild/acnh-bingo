@@ -291,6 +291,12 @@ ul {
   padding: 2% 0%;
 }
 
+.confetti-container {
+  align-self: center;
+  position: sticky;
+  left: 50%;
+}
+
 .shuffle {
   margin: 2%;
   padding: 20px 10px;
