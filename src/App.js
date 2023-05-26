@@ -17,9 +17,8 @@ function Square({onSquareClick, background, title, selection, value}) {
         style={{
           backgroundImage: `url(${background})`,
         }}
-        alt={title}
+        alt title={title}
       >
-        <h1 className="villagerName clearfix">{title}</h1>
         <div 
           className="opacityChanger"
           style={{
@@ -31,6 +30,7 @@ function Square({onSquareClick, background, title, selection, value}) {
             backgroundColor: value === true ? `rgba(0,0,0, 0.60)`: `rgba(255, 255, 255, 0)`,
           }}
         />
+        <h1 className="villagerName clearfix">{title}</h1>
         <img 
           className="activeMarkers"
           src={markerSprite}
@@ -187,7 +187,6 @@ export default function Board() {
           <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
         </div>
       </div>
-      {/* <div>{isExploding && <ConfettiExplosion />}</div> */}
       <div className="status">{status}</div>
       <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
       

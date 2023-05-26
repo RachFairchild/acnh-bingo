@@ -1,4 +1,5 @@
 @import "bootstrap";
+
 @font-face {
   font-family: 'FinkHeavy';
   src: url(./fonts/FinkHeavy.ttf);
@@ -200,9 +201,10 @@ ul {
   z-index: 10;
   position: relative;
   object-fit: none;
+  top: 10;
 }
 
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 480px) {
   .square {
     display: flex;
     flex-flow: column wrap;
@@ -215,7 +217,6 @@ ul {
     background-size: 64px;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
     font-weight: bold;
     line-height: 34px;
     height: 64px;
@@ -223,23 +224,34 @@ ul {
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 64px;
+    width: 5.5rem;
+    height: 5.5rem;
     position: relative;
     background-size: cover;
   }
 
+  .headerLeft h1 {
+    font-size: 3rem;
+  }
+
+  .tagline {
+    display: none;
+  }
+
   .villagerName {
-    font-size: 14px !important;
+    font-size: 0.9rem !important;
     color: #000000;
     -webkit-text-fill-color: #000000;
     -webkit-text-stroke: 0px white;
-    margin-bottom: -8px;
+    margin-bottom: -1px;
   }
 
   .activeMarkers {
-    width: 60px;
-    height: 60px;
-    opacity: 1 !important;
+    transform: scale(0.2) !important;
+  }
+
+  .titleSquare {
+    font-size: 3rem;
   }
 }
 
