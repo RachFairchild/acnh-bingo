@@ -146,7 +146,7 @@ export default function Board() {
       <div className="boardContainer">
         <div className="confetti-container">{status && <ConfettiExplosion />}</div>
         <div className="board-row">
-          <h1 className="titleSquare">B</h1>
+          <h1 className="titleSquare b">B</h1>
           <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
           <Square value={squares[1]} title={name[1]} background={board[1]} selection={marker} onSquareClick={() => handleClick(1)} />
           <Square value={squares[2]} title={name[2]} background={board[2]} selection={marker} onSquareClick={() => handleClick(2)} />
@@ -154,7 +154,7 @@ export default function Board() {
           <Square value={squares[4]} title={name[4]} background={board[4]} selection={marker} onSquareClick={() => handleClick(4)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare">I</h1>
+          <h1 className="titleSquare i">I</h1>
           <Square value={squares[5]} title={name[5]} background={board[5]} selection={marker} onSquareClick={() => handleClick(5)} />
           <Square value={squares[6]} title={name[6]} background={board[6]} selection={marker} onSquareClick={() => handleClick(6)} />
           <Square value={squares[7]} title={name[7]} background={board[7]} selection={marker} onSquareClick={() => handleClick(7)} />
@@ -162,7 +162,7 @@ export default function Board() {
           <Square value={squares[9]} title={name[9]} background={board[9]} selection={marker} onSquareClick={() => handleClick(9)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare">N</h1>
+          <h1 className="titleSquare n">N</h1>
           <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
           <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
           {/* Free space: */}
@@ -171,7 +171,7 @@ export default function Board() {
           <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare">G</h1>
+          <h1 className="titleSquare g">G</h1>
           <Square value={squares[15]} title={name[15]} background={board[15]} selection={marker} onSquareClick={() => handleClick(15)} />
           <Square value={squares[16]} title={name[16]} background={board[16]} selection={marker} onSquareClick={() => handleClick(16)} />
           <Square value={squares[17]} title={name[17]} background={board[17]} selection={marker} onSquareClick={() => handleClick(17)} />
@@ -179,7 +179,7 @@ export default function Board() {
           <Square value={squares[19]} title={name[19]} background={board[19]} selection={marker} onSquareClick={() => handleClick(19)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare">O</h1>
+          <h1 className="titleSquare o">O</h1>
           <Square value={squares[20]} title={name[20]} background={board[20]} selection={marker} onSquareClick={() => handleClick(20)} />
           <Square value={squares[21]} title={name[21]} background={board[21]} selection={marker} onSquareClick={() => handleClick(21)} />
           <Square value={squares[22]} title={name[22]} background={board[22]} selection={marker} onSquareClick={() => handleClick(22)} />

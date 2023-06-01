@@ -158,7 +158,7 @@ ul {
   align-items: center;
   justify-content: center;
   margin: 10px;
-}
+}     
 
 .boardContainer {
   display: flex;
@@ -186,6 +186,32 @@ ul {
   font-size: 400%;
   text-align:center;
   font-family: 'FinkHeavy';
+  color: #8a8ae0 !important;
+  /* text-shadow: 0 2px 1px #000000, 
+  7px 7px 0px #000000, 
+  5px 5px 0px #000000; */
+  text-shadow: 3px 2px 0 #3b3a88;
+}
+
+.titleSquare:hover {
+
+}
+
+.titleSquare.b {
+  color: #95f2a7;
+}
+.titleSquare.i {
+  color: #7ae5ea;
+
+}
+.titleSquare.n {
+  color: #989ed6;
+}
+.titleSquare.g {
+  color: #837cc3;
+}
+.titleSquare.o {
+  color: #f28c8a;
 }
 
 .villagerName {
@@ -247,7 +273,9 @@ ul {
   }
 
   .activeMarkers {
-    transform: scale(0.2) !important;
+    transform: scale(0.1) !important;
+    object-position: 0px 0px;
+    inset: 0px 100px 0px 0px;
   }
 
   .titleSquare {
