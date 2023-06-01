@@ -166,7 +166,7 @@ export default function Board() {
           <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
           <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
           {/* Free space: */}
-          <Square value={squares[12]} title="FREE" background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} />
+          <Square value={squares[12]} title="FREE" background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} id="freeSpace" />
           <Square value={squares[13]} title={name[13]} background={board[13]} selection={marker} onSquareClick={() => handleClick(13)} />
           <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
         </div>
