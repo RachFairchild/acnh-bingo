@@ -9,6 +9,13 @@
   0%, 40%, 100% {transform: translateY(0);}
   20% {transform: translateY(-20px);}
 }
+@keyframes tiltShake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
 
 * {
   box-sizing: border-box;
@@ -34,8 +41,9 @@ body {
 #header, #footer {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  align-content: stretch;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -55,20 +63,40 @@ body {
 }
 
 #footer {
+  position: absolute;
   margin-top: 50px;
-  height: 40px;
-  font-size: x-small;
+  height: 4.2rem;
+  font-size: 1.1rem;
   box-shadow: 1px 0px 5px #007c744d;
+  background: url('img/grass-pattern.jpg') repeat;
+  background-size: 600px;
+  background-position: bottom -60px right 0px;
 }
 
 #footer a {
-  color: #007c74a2;
+  display: block;
+  margin-left: 4%;
+  /* color: #007c74a2; */
+  color: #fff;
   text-decoration: none;
 }
 
 #footer a:hover {
-  color: #007c74;
+  /* color: #007c74; */
+  color: #fff;
   text-decoration: underline;
+  position:relative;
+  animation-name: tiltShake;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+}
+
+.mystery-container {
+  display: block;
+  margin-right: 3%;
+  background: transparent center/cover url('./img/mystery-hole.png') no-repeat;
+  height: 40px;
+  width: 45px;
 }
 
 #headerContent {
@@ -181,21 +209,19 @@ ul {
 }
 
 .titleSquare {
-  font-size: 400%;
   text-align:center;
   font-family: 'FinkHeavy';
+  font-size: 400%;
   color: #8a8ae0 !important;
   text-shadow: 3px 2px 0 #3b3a88;
-  /* animation: waveAnim 1s infinite;
-  animation-delay: calc(.1s * var(--i)); */
-
+  /* -webkit-text-stroke: 1px white; */
 }
 
 .bounce {
   position:relative;
   animation-name: waveAnim;
   animation-duration: 1s;
-  animation-iteration-count: 3;
+  animation-iteration-count: 2;
 }
 
 .bounce.b {
@@ -217,11 +243,41 @@ ul {
 .villagerName {
   position: absolute;
   font-size: 28px;
-  color: #000000;
-  -webkit-text-fill-color: #000000;
-  -webkit-text-stroke: 0.5px white;
+  color: #fff;
+  background-image: linear-gradient(#474599,#474599);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+  /* -webkit-text-fill-color: #000000;
+  -webkit-text-stroke: 0.5px white; */
+  /* text-shadow:
+    -1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff; */
   margin-bottom: 0px;
 }
+
+.villagerName:hover {
+  background-size: 100% 100%;
+}
+
+#freeSpace {
+  color: #3b3a88 !important;
+}
+
+.opacityChanger {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  transition: background-image 1s;
+}
+
+/* .opacityChanger:hover {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(59, 58, 136));
+} */
 
 .activeMarkers {
   z-index: 10;
@@ -307,10 +363,12 @@ ul {
   margin: 40px;
   /* border styling: */
   background-color: #f8f9fa;
-  border: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  border-image-source: linear-gradient(to left, #7ae5ea, #3a3987);
+  border-radius: 25px;
+  border: 5px solid white;
+  /* border-image-slice: 1; */
+  /* border-width: 15px; */
+  /* border-image-source: linear-gradient(to left, #dff3d9, #fff); */
+  background-image: url('img/leaf-pattern.jpg')
 }
 
 .buttonContainer {
