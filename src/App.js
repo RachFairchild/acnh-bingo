@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 import React from 'react';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import giftImg from "./img/Gift.png"
