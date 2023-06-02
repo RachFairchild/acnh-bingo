@@ -72,8 +72,6 @@ export default function Board() {
   const [marker, setMarker] = useState({name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'});
   const [isActive, setActive] = useState(false);
 
-console.log(`Status of isActive = ${isActive}, typeof = ${typeof(isActive)}`);
-
   const sprite = [
     {name: 'apple', position: '-10px -10px', width: '527px', height: '576px', top: '230px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.3)'},
     {name: 'cherry', position: '-10px -2610px', width: '519px', height: '691px', top: '290px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.25)'},
@@ -94,7 +92,7 @@ console.log(`Status of isActive = ${isActive}, typeof = ${typeof(isActive)}`);
   }
 
   function handleClick(i) {
-    console.log(`Square ${i} clicked!`);
+    // console.log(`Square ${i} clicked!`);
     const nextSquares = squares.slice();
     if(!squares[i]) {
       nextSquares[i] = true;
@@ -107,19 +105,13 @@ console.log(`Status of isActive = ${isActive}, typeof = ${typeof(isActive)}`);
 
   function winnerCheck(squares) {
     const winner = calculateWinner(squares);
-    console.log(`winner value = ${winner}`);
+    console.log(`${winner ? "Winner!" : "No winner yet..."}`);
     if(winner) {
-      let status = "true";
-      // handleToggle(status);
       setActive(true);
+    } else if(!winner) {
+      setActive(false);
     }
   }
-
-  // async function handleToggle(win) {
-  //   if(win) {
-  //     setActive(!isActive);
-  //   }
-  // }
   
   function populateImages() {
     setSquares(Array(25).fill(null));
