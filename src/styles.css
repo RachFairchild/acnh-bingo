@@ -88,11 +88,7 @@ body {
   align-items: flex-end;
   align-content: center;
   /* animation attempt */
-  position:relative;
-  animation-name: waveAnim;
-  animation-delay: 1s;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
+
 }
 
 #headerLeft > h1 {
@@ -198,21 +194,27 @@ ul {
 
 }
 
-.titleSquare.b {
-  color: #95f2a7;
+.bounce {
+  position:relative;
+  animation-name: waveAnim;
+  animation-duration: 1s;
+  animation-iteration-count: 3;
 }
-.titleSquare.i {
-  color: #7ae5ea;
 
+.bounce.b {
+  animation-delay: .1s;
 }
-.titleSquare.n {
-  color: #989ed6;
+.bounce.i {
+  animation-delay: .2s;
 }
-.titleSquare.g {
-  color: #837cc3;
+.bounce.n {
+  animation-delay: .3s;
 }
-.titleSquare.o {
-  color: #f28c8a;
+.bounce.g {
+  animation-delay: .4s;
+}
+.bounce.o {
+  animation-delay: .5s;
 }
 
 @keyframes waveAnim {

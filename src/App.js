@@ -70,6 +70,9 @@ export default function Board() {
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
   const [marker, setMarker] = useState({name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'});
+  const [isActive, setActive] = useState(false);
+
+console.log(`Status of isActive = ${isActive}, typeof = ${typeof(isActive)}`);
 
   const sprite = [
     {name: 'apple', position: '-10px -10px', width: '527px', height: '576px', top: '230px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.3)'},
@@ -83,15 +86,15 @@ export default function Board() {
     {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
+  window.onload = () => populateImages();
+
   function markerPick(i) {
-    console.log('markerPick is running...');
     let selection = sprite[i];
     setMarker(selection);
-    console.log(`marker state is now ${selection}`);
   }
 
   function handleClick(i) {
-    console.log(`Square ${i} clicked!`)
+    console.log(`Square ${i} clicked!`);
     const nextSquares = squares.slice();
     if(!squares[i]) {
       nextSquares[i] = true;
@@ -99,7 +102,24 @@ export default function Board() {
       nextSquares[i] = null;
     }
     setSquares(nextSquares);
+    winnerCheck(nextSquares);
   }
+
+  function winnerCheck(squares) {
+    const winner = calculateWinner(squares);
+    console.log(`winner value = ${winner}`);
+    if(winner) {
+      let status = "true";
+      // handleToggle(status);
+      setActive(true);
+    }
+  }
+
+  // async function handleToggle(win) {
+  //   if(win) {
+  //     setActive(!isActive);
+  //   }
+  // }
   
   function populateImages() {
     setSquares(Array(25).fill(null));
@@ -118,7 +138,6 @@ export default function Board() {
     populateNames(alreadyUsed);
     alreadyUsed = [];
   }
-
   async function populateNames(arr) {
     const nextNames = name.slice();
     for(let i = 0; i < arr.length; i++) {
@@ -127,7 +146,6 @@ export default function Board() {
     }
     setName(nextNames);
   }
-
   async function villagerName(villagerID) {
     const response = await fetch(`https://acnhapi.com/v1/villagers/${villagerID}`);
     let data = await response.json();
@@ -135,18 +153,12 @@ export default function Board() {
     return currentVillager;
   }
 
-  const winner = calculateWinner(squares);
-  let status;
-  if(winner) {
-    status = "BINGO!"
-  }
-
   return (
     <div className="entireBoard">
       <div className="boardContainer">
-        <div className="confetti-container">{status && <ConfettiExplosion />}</div>
+        <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
         <div className="board-row">
-          <h1 className="titleSquare b">B</h1>
+          <h1 className={`titleSquare b ${isActive ? "bounce" : ""}`}>B</h1>
           <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
           <Square value={squares[1]} title={name[1]} background={board[1]} selection={marker} onSquareClick={() => handleClick(1)} />
           <Square value={squares[2]} title={name[2]} background={board[2]} selection={marker} onSquareClick={() => handleClick(2)} />
@@ -154,7 +166,7 @@ export default function Board() {
           <Square value={squares[4]} title={name[4]} background={board[4]} selection={marker} onSquareClick={() => handleClick(4)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare i">I</h1>
+          <h1 className={`titleSquare i ${isActive ? "bounce" : ""}`}>I</h1>
           <Square value={squares[5]} title={name[5]} background={board[5]} selection={marker} onSquareClick={() => handleClick(5)} />
           <Square value={squares[6]} title={name[6]} background={board[6]} selection={marker} onSquareClick={() => handleClick(6)} />
           <Square value={squares[7]} title={name[7]} background={board[7]} selection={marker} onSquareClick={() => handleClick(7)} />
@@ -162,7 +174,7 @@ export default function Board() {
           <Square value={squares[9]} title={name[9]} background={board[9]} selection={marker} onSquareClick={() => handleClick(9)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare n">N</h1>
+          <h1 className={`titleSquare n ${isActive ? "bounce" : ""}`}>N</h1>
           <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
           <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
           {/* Free space: */}
@@ -171,7 +183,7 @@ export default function Board() {
           <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare g">G</h1>
+          <h1 className={`titleSquare g ${isActive ? "bounce" : ""}`}>G</h1>
           <Square value={squares[15]} title={name[15]} background={board[15]} selection={marker} onSquareClick={() => handleClick(15)} />
           <Square value={squares[16]} title={name[16]} background={board[16]} selection={marker} onSquareClick={() => handleClick(16)} />
           <Square value={squares[17]} title={name[17]} background={board[17]} selection={marker} onSquareClick={() => handleClick(17)} />
@@ -179,7 +191,7 @@ export default function Board() {
           <Square value={squares[19]} title={name[19]} background={board[19]} selection={marker} onSquareClick={() => handleClick(19)} />
         </div>
         <div className="board-row">
-          <h1 className="titleSquare o">O</h1>
+          <h1 className={`titleSquare o ${isActive ? "bounce" : ""}`}>O</h1>
           <Square value={squares[20]} title={name[20]} background={board[20]} selection={marker} onSquareClick={() => handleClick(20)} />
           <Square value={squares[21]} title={name[21]} background={board[21]} selection={marker} onSquareClick={() => handleClick(21)} />
           <Square value={squares[22]} title={name[22]} background={board[22]} selection={marker} onSquareClick={() => handleClick(22)} />
@@ -187,7 +199,7 @@ export default function Board() {
           <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
         </div>
       </div>
-      <div className="status">{status}</div>
+      <div className="status">{isActive}</div>
       <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
       
       <div className="buttonContainerContainer mx-auto col-7">
