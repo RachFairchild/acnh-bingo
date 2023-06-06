@@ -5,8 +5,52 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import giftImg from "./img/Gift.png"
+import fossilImg from "./img/Fossil.png"
 import markerSprite from "./img/sprite-2.png"
 import './fonts/FinkHeavy.ttf';
+
+function Header() {
+  return (
+    <header id="header">
+        <div id="headerLeft">
+          {/* <div id="headerLeftImage" /> */}
+          <img 
+            className="headerLeftImage"
+            src={fossilImg}
+            alt="Animal Crossing fossil" 
+            style={{
+              // position: `absolute`,
+              zIndex: 100,
+              objectFit: `cover`,
+              // objectPosition: `-20px -460px`,
+              // objectPosition: `0px -135px`,
+              width: `17%`,
+              height: `17%`,
+              maxWidth: `500px`,
+              maxHeight: `500px`,
+            }}
+          />
+          <h1 class="headerTitle">BINGO hopper</h1>
+        </div>
+        <div class="headerRight slide-effect">
+          <span class="tagline slideIn">An Animal Crossing: New Horizons BINGO App</span>
+        </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer id="footer">
+      <a href="https://rachelfairchild.netlify.app/">
+        <span>&copy;</span>2023 Rachel Fairchild
+      </a>
+      <div class="mystery-container">
+        <a href="#" id="secret"></a>
+      </div>
+  </footer>
+  );
+}
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -141,6 +185,8 @@ export default function Board() {
   }
 
   return (
+    <>
+    <Header />
     <div className="entireBoard">
       <div className="boardContainer">
         <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
@@ -320,6 +366,8 @@ export default function Board() {
           </button>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 
