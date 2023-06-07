@@ -31,8 +31,8 @@ function Header() {
           />
           <h1 class="headerTitle">BINGO hopper</h1>
         </div>
-        <div class="headerRight slide-effect">
-          <span class="tagline slideIn">An Animal Crossing: New Horizons BINGO App</span>
+        <div class="headerRight">
+          <span className="tagline xsmall small">An Animal Crossing: New Horizons BINGO App</span>
         </div>
     </header>
   );
