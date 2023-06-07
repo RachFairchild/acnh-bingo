@@ -224,10 +224,6 @@ ul {
   max-width: 100%
 }
 
-.boardContainer * {
-  flex-shrink: 2;
-}
-
 .square {
   display: flex;
   flex-flow: column nowrap;
