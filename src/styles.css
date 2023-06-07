@@ -96,15 +96,16 @@ body {
 }
 
 /* EXTRA SMALL DEVICES */
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 767px) {
   .xs {
     display: none;
+    /* visibility: hidden; */
   }
 }
 /* SMALL DEVICES (landscape phones, 576px and up) */
 @media screen and (min-width: 576px) {
   .sm {
-      display: none;
+    display: none;
   }
 }
 /* MEDIUM DEVICES (tablets, 768px and up) */
@@ -397,7 +398,7 @@ ul {
   justify-content:center;
   align-items: center;
   padding: 10px;
-  margin: 40px;
+  /* margin: 40px; */
   /* border styling: */
   background-color: #f8f9fa;
   border-radius: 25px;
@@ -438,6 +439,8 @@ ul {
 }
 
 .shuffle {
-  margin: 0;
-  /* padding: 20px 10px; */
+  margin: min(90px, 10%);
+  justify-self: center;
+  width: 45%;
+  max-width: 350px;
 }

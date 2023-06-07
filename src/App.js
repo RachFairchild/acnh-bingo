@@ -14,7 +14,7 @@ function Header() {
     <header id="header">
         <div id="headerLeft">
           <img 
-            className="headerLeftImage"
+            className={`headerLeftImage`}
             src={fossilImg}
             alt="Animal Crossing fossil" 
             style={{
@@ -29,10 +29,10 @@ function Header() {
               maxHeight: `500px`,
             }}
           />
-          <h1 class="headerTitle">BINGO hopper</h1>
+          <h1 className={`headerTitle`}>BINGO hopper</h1>
         </div>
-        <div class="headerRight">
-          <span className="tagline xsmall small">An Animal Crossing: New Horizons BINGO App</span>
+        <div className={`headerRight`}>
+          <span className={`xs`}>An Animal Crossing: New Horizons BINGO App</span>
         </div>
     </header>
   );
@@ -231,7 +231,7 @@ export default function Board() {
             <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
           </div>
         </div>
-        <div className="status">{isActive}</div>
+        {/* <div className="status">{isActive}</div> */}
         <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
 
         <div className="buttonContainerContainer mx-auto col-7">
