@@ -85,7 +85,7 @@ body {
   }
   #headerLeft:hover > img {
     transition: transform 0.5s ease;
-    transform: rotate(0.90turn);
+    transform: rotate(1.0turn);
   }
   .headerRight {
     width: 100%;
@@ -221,6 +221,11 @@ ul {
   flex-flow: row nowrap;
   justify-content: center;
   min-width: 90%;
+  max-width: 100%
+}
+
+.boardContainer * {
+  flex-shrink: 2;
 }
 
 .square {
