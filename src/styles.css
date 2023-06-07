@@ -38,6 +38,7 @@ body {
 #header, #footer {
   display: flex;
   flex-flow: row nowrap;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
   align-content: stretch;
@@ -53,14 +54,11 @@ body {
   background: linear-gradient(140deg, rgba(204,241,203,1) 6%, rgba(213,245,222,1) 21%, rgba(166,241,187,1) 93%);
 }
 #header {
-  /* margin-bottom: 3%; */
-  position: absolute;
-  /* margin-top: -15%; */
-  /* padding: 20px; */
+  position: sticky;
+  margin-bottom: min(100px, 5%);
   box-shadow: 1px 0px 3px #5f5f5f73;
   background: rgba(255, 255, 255, 0.5);
-  /* position: relative; */
-  /* left: 0; */
+
 
   #headerLeft {
     font-family: 'FinkHeavy', 'Tsukimi Rounded', sans-serif;
@@ -93,7 +91,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1%; 
+    margin-right: 2%; 
   }
 }
 
@@ -208,17 +206,18 @@ ul {
 
 
 .entireBoard {
-  display: flex;
+  /* display: flex; */
+  display: inline-block;
+  width: 100%;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   /* margin-top: 10%; */
   /* margin-top: min(50px, 10%); */
 }
 .boardContainer {
   display: flex;
-  padding-top: max(100px, 10%);
+  /* padding-top: max(100px, 10%); */
   flex-flow: row nowrap;
   justify-content: center;
   min-width: 90%;

@@ -184,189 +184,189 @@ export default function Board() {
   }
 
   return (
-    <>
-    <Header />
-    <div className="entireBoard">
-      <div className="boardContainer">
-        <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
-        <div className="board-row">
-          <h1 className={`titleSquare b ${isActive ? "bounce" : ""}`}>B</h1>
-          <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
-          <Square value={squares[1]} title={name[1]} background={board[1]} selection={marker} onSquareClick={() => handleClick(1)} />
-          <Square value={squares[2]} title={name[2]} background={board[2]} selection={marker} onSquareClick={() => handleClick(2)} />
-          <Square value={squares[3]} title={name[3]} background={board[3]} selection={marker} onSquareClick={() => handleClick(3)} />
-          <Square value={squares[4]} title={name[4]} background={board[4]} selection={marker} onSquareClick={() => handleClick(4)} />
+    <div className="all">
+      <Header />
+      <div className="entireBoard">
+        <div className="boardContainer">
+          <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
+          <div className="board-row">
+            <h1 className={`titleSquare b ${isActive ? "bounce" : ""}`}>B</h1>
+            <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
+            <Square value={squares[1]} title={name[1]} background={board[1]} selection={marker} onSquareClick={() => handleClick(1)} />
+            <Square value={squares[2]} title={name[2]} background={board[2]} selection={marker} onSquareClick={() => handleClick(2)} />
+            <Square value={squares[3]} title={name[3]} background={board[3]} selection={marker} onSquareClick={() => handleClick(3)} />
+            <Square value={squares[4]} title={name[4]} background={board[4]} selection={marker} onSquareClick={() => handleClick(4)} />
+          </div>
+          <div className="board-row">
+            <h1 className={`titleSquare i ${isActive ? "bounce" : ""}`}>I</h1>
+            <Square value={squares[5]} title={name[5]} background={board[5]} selection={marker} onSquareClick={() => handleClick(5)} />
+            <Square value={squares[6]} title={name[6]} background={board[6]} selection={marker} onSquareClick={() => handleClick(6)} />
+            <Square value={squares[7]} title={name[7]} background={board[7]} selection={marker} onSquareClick={() => handleClick(7)} />
+            <Square value={squares[8]} title={name[8]} background={board[8]} selection={marker} onSquareClick={() => handleClick(8)} />
+            <Square value={squares[9]} title={name[9]} background={board[9]} selection={marker} onSquareClick={() => handleClick(9)} />
+          </div>
+          <div className="board-row">
+            <h1 className={`titleSquare n ${isActive ? "bounce" : ""}`}>N</h1>
+            <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
+            <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
+            {/* Free space: */}
+            <Square value={squares[12]} title={""} background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} />
+            <Square value={squares[13]} title={name[13]} background={board[13]} selection={marker} onSquareClick={() => handleClick(13)} />
+            <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
+          </div>
+          <div className="board-row">
+            <h1 className={`titleSquare g ${isActive ? "bounce" : ""}`}>G</h1>
+            <Square value={squares[15]} title={name[15]} background={board[15]} selection={marker} onSquareClick={() => handleClick(15)} />
+            <Square value={squares[16]} title={name[16]} background={board[16]} selection={marker} onSquareClick={() => handleClick(16)} />
+            <Square value={squares[17]} title={name[17]} background={board[17]} selection={marker} onSquareClick={() => handleClick(17)} />
+            <Square value={squares[18]} title={name[18]} background={board[18]} selection={marker} onSquareClick={() => handleClick(18)} />
+            <Square value={squares[19]} title={name[19]} background={board[19]} selection={marker} onSquareClick={() => handleClick(19)} />
+          </div>
+          <div className="board-row">
+            <h1 className={`titleSquare o ${isActive ? "bounce" : ""}`}>O</h1>
+            <Square value={squares[20]} title={name[20]} background={board[20]} selection={marker} onSquareClick={() => handleClick(20)} />
+            <Square value={squares[21]} title={name[21]} background={board[21]} selection={marker} onSquareClick={() => handleClick(21)} />
+            <Square value={squares[22]} title={name[22]} background={board[22]} selection={marker} onSquareClick={() => handleClick(22)} />
+            <Square value={squares[23]} title={name[23]} background={board[23]} selection={marker} onSquareClick={() => handleClick(23)} />
+            <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
+          </div>
         </div>
-        <div className="board-row">
-          <h1 className={`titleSquare i ${isActive ? "bounce" : ""}`}>I</h1>
-          <Square value={squares[5]} title={name[5]} background={board[5]} selection={marker} onSquareClick={() => handleClick(5)} />
-          <Square value={squares[6]} title={name[6]} background={board[6]} selection={marker} onSquareClick={() => handleClick(6)} />
-          <Square value={squares[7]} title={name[7]} background={board[7]} selection={marker} onSquareClick={() => handleClick(7)} />
-          <Square value={squares[8]} title={name[8]} background={board[8]} selection={marker} onSquareClick={() => handleClick(8)} />
-          <Square value={squares[9]} title={name[9]} background={board[9]} selection={marker} onSquareClick={() => handleClick(9)} />
-        </div>
-        <div className="board-row">
-          <h1 className={`titleSquare n ${isActive ? "bounce" : ""}`}>N</h1>
-          <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
-          <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
-          {/* Free space: */}
-          <Square value={squares[12]} title={""} background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} />
-          <Square value={squares[13]} title={name[13]} background={board[13]} selection={marker} onSquareClick={() => handleClick(13)} />
-          <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
-        </div>
-        <div className="board-row">
-          <h1 className={`titleSquare g ${isActive ? "bounce" : ""}`}>G</h1>
-          <Square value={squares[15]} title={name[15]} background={board[15]} selection={marker} onSquareClick={() => handleClick(15)} />
-          <Square value={squares[16]} title={name[16]} background={board[16]} selection={marker} onSquareClick={() => handleClick(16)} />
-          <Square value={squares[17]} title={name[17]} background={board[17]} selection={marker} onSquareClick={() => handleClick(17)} />
-          <Square value={squares[18]} title={name[18]} background={board[18]} selection={marker} onSquareClick={() => handleClick(18)} />
-          <Square value={squares[19]} title={name[19]} background={board[19]} selection={marker} onSquareClick={() => handleClick(19)} />
-        </div>
-        <div className="board-row">
-          <h1 className={`titleSquare o ${isActive ? "bounce" : ""}`}>O</h1>
-          <Square value={squares[20]} title={name[20]} background={board[20]} selection={marker} onSquareClick={() => handleClick(20)} />
-          <Square value={squares[21]} title={name[21]} background={board[21]} selection={marker} onSquareClick={() => handleClick(21)} />
-          <Square value={squares[22]} title={name[22]} background={board[22]} selection={marker} onSquareClick={() => handleClick(22)} />
-          <Square value={squares[23]} title={name[23]} background={board[23]} selection={marker} onSquareClick={() => handleClick(23)} />
-          <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
+        <div className="status">{isActive}</div>
+        <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
+
+        <div className="buttonContainerContainer mx-auto col-7">
+            <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Apple BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-25px -25px`,
+                  width: `527px`,
+                  height: `576px`,
+                }}
+              /></div>} 
+              Apple
+            </button>
+            <button onClick={() => markerPick(1)} className="buttonContainer btn btn-light btn-default">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Cherry BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-18px -580px`,
+                  width: `440px`,
+                  height: `auto`,
+                }}
+              /></div>} 
+              Cherry
+            </button>
+            <button onClick={() => markerPick(2)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Coconut BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-8px -268px`,
+                  width: `420px`,
+                  height: `auto`,
+                }}
+              /></div>} Coconut
+            </button>
+            <button onClick={() => markerPick(3)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Orange BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-13px -130px`,
+                  width: `410px`,
+                  height: `auto`,
+                }}
+              /></div>} Orange
+            </button>
+            <button onClick={() => markerPick(4)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Peach BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-26px -695px`,
+                  width: `340px`,
+                  height: `auto`,
+                }}
+              /></div>} Peach
+            </button>
+            <button onClick={() => markerPick(5)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Pear BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-13px -630px`,
+                  width: `380px`,
+                  height: `auto`,
+                }}
+              /></div>} Pear
+            </button>
+            <button onClick={() => markerPick(6)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Bells BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-8px -345px`,
+                  width: `360px`,
+                  height: `auto`,
+                }}
+              /></div>} Bells
+            </button>
+            <button onClick={() => markerPick(7)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={markerSprite}
+                alt="Fossil BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `-20px -460px`,
+                  width: `130px`,
+                  height: `auto`,
+                }}
+              /></div>} Fossil
+            </button>
+            <button onClick={() => markerPick(8)} className="buttonContainer btn btn-light">
+              {<div className="crop">
+                <img 
+                className="buttonMarker"
+                src={giftImg}
+                alt="Gift BINGO marker" 
+                style={{
+                  objectFit: `cover`,
+                  objectPosition: `0px -7px`,
+                  width: `100px`,
+                  height: `auto`,
+                }}
+              /></div>} Gift
+            </button>
         </div>
       </div>
-      <div className="status">{isActive}</div>
-      <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
-      
-      <div className="buttonContainerContainer mx-auto col-7">
-          <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Apple BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-25px -25px`,
-                width: `527px`,
-                height: `576px`,
-              }}
-            /></div>} 
-            Apple
-          </button>
-          <button onClick={() => markerPick(1)} className="buttonContainer btn btn-light btn-default">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Cherry BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-18px -580px`,
-                width: `440px`,
-                height: `auto`,
-              }}
-            /></div>} 
-            Cherry
-          </button>
-          <button onClick={() => markerPick(2)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Coconut BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-8px -268px`,
-                width: `420px`,
-                height: `auto`,
-              }}
-            /></div>} Coconut
-          </button>
-          <button onClick={() => markerPick(3)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Orange BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-13px -130px`,
-                width: `410px`,
-                height: `auto`,
-              }}
-            /></div>} Orange
-          </button>
-          <button onClick={() => markerPick(4)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Peach BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-26px -695px`,
-                width: `340px`,
-                height: `auto`,
-              }}
-            /></div>} Peach
-          </button>
-          <button onClick={() => markerPick(5)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Pear BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-13px -630px`,
-                width: `380px`,
-                height: `auto`,
-              }}
-            /></div>} Pear
-          </button>
-          <button onClick={() => markerPick(6)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Bells BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-8px -345px`,
-                width: `360px`,
-                height: `auto`,
-              }}
-            /></div>} Bells
-          </button>
-          <button onClick={() => markerPick(7)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={markerSprite}
-              alt="Fossil BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `-20px -460px`,
-                width: `130px`,
-                height: `auto`,
-              }}
-            /></div>} Fossil
-          </button>
-          <button onClick={() => markerPick(8)} className="buttonContainer btn btn-light">
-            {<div className="crop">
-              <img 
-              className="buttonMarker"
-              src={giftImg}
-              alt="Gift BINGO marker" 
-              style={{
-                objectFit: `cover`,
-                objectPosition: `0px -7px`,
-                width: `100px`,
-                height: `auto`,
-              }}
-            /></div>} Gift
-          </button>
-      </div>
+      <Footer />
     </div>
-    <Footer />
-    </>
   );
 }
 
