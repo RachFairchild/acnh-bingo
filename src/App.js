@@ -49,7 +49,7 @@ function Footer() {
   );
 }
 
-(async function() {
+async function fetchVillagerInfo(i) {
   const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
   method: "GET",  
   headers: {
@@ -61,8 +61,16 @@ function Footer() {
   const villagers = await response.json();
   response.ok;
   response.status;
-  console.log(villagers)
-})();
+
+  const villager = {
+    id: i,
+    name: villagers[i].name,
+    imageUrl: villagers[i].nh_details.photo_url,
+    catchphrase: villagers[i].nh_details.catchphrase,
+  }
+  console.log(villager);
+  return villager;
+}
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -143,7 +151,6 @@ export default function Board() {
   }
 
   function handleClick(i) {
-    // console.log(`Square ${i} clicked!`);
     const nextSquares = squares.slice();
     if(!squares[i]) {
       nextSquares[i] = true;
@@ -169,13 +176,13 @@ export default function Board() {
     const nextBoard = board.slice();
     let alreadyUsed = [];
     for(let i = 0; i < 25; i++) {
-      let villagerNum = Math.floor(Math.random() * 391);
+      let villagerNum = Math.floor(Math.random() * 419);
       while(alreadyUsed.includes(villagerNum) || villagerNum < 1) {
-        villagerNum = Math.floor(Math.random() * 391);
+        villagerNum = Math.floor(Math.random() * 419);
       }
       alreadyUsed.push(villagerNum);
-      const villagerUrl = `https://acnhapi.com/v1/images/villagers/${villagerNum}`;
-      nextBoard[i] = villagerUrl;
+      const villager = fetchVillagerInfo(villagerNum);
+      nextBoard[i] = villager.imageUrl;
     }
     shuffleBoard(nextBoard);
     populateNames(alreadyUsed);
@@ -184,7 +191,7 @@ export default function Board() {
   async function populateNames(arr) {
     const nextNames = name.slice();
     for(let i = 0; i < arr.length; i++) {
-      let newName = await villagerName(arr[i]);
+      let newName = await villagerName(arr[i].name);
       nextNames[i] = newName;
     }
     setName(nextNames);
