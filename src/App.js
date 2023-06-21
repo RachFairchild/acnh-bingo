@@ -1,7 +1,5 @@
-// import React, { Component } from 'react';
 import React from 'react';
 import { useState } from 'react';
-// import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfettiExplosion from 'react-confetti-explosion';
 import giftImg from "./img/Gift.png"
@@ -44,12 +42,27 @@ function Footer() {
       <a href="https://rachelfairchild.netlify.app/">
         <span>&copy;</span>2023 Rachel Fairchild
       </a>
-      <div class="mystery-container">
+      <div className="mystery-container">
         <a href="#" id="secret"></a>
       </div>
   </footer>
   );
 }
+
+(async function() {
+  const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
+  method: "GET",  
+  headers: {
+      'X-API-KEY': process.env.REACT_APP_NOOKIPEDIA_API_KEY,
+      'Accept-Version': '1.0.0',
+      'Accept': 'application/json'
+    }
+  });
+  const villagers = await response.json();
+  response.ok;
+  response.status;
+  console.log(villagers)
+})();
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -182,6 +195,7 @@ export default function Board() {
     const currentVillager = data.name["name-USen"];
     return currentVillager;
   }
+
 
   return (
     <div className="all">
