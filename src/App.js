@@ -49,17 +49,19 @@ function Footer() {
   );
 }
 
+function Square({ villager, name, catchphrase, onSquareClick, selection, value }) { 
 
-function Square({onSquareClick, background, title, selection, value}) {  
   return (
     <div>
       <button 
         className="square"
         onClick={onSquareClick}
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(${villager})`,
         }}
-        alt title={title}
+        // alt title={title}
+        title={`"${catchphrase}"`}
+        alt={name}
       >
         <div 
           className="opacityChanger"
@@ -67,7 +69,7 @@ function Square({onSquareClick, background, title, selection, value}) {
             backgroundColor: value === true ? `rgba(0,0,0, 0.60)`: `rgba(255, 255, 255, 0)`,
           }}
         />
-        <h1 className="villagerName clearfix">{title}</h1>
+        <h1 className="villagerName clearfix">{name}</h1>
         <img 
           className="activeMarkers"
           src={markerSprite}
@@ -106,6 +108,7 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [board, shuffleBoard] = useState(Array(25).fill(null));
   const [name, setName] = useState(Array(25).fill(null));
+  const [phrase, setPhrase] = useState(Array(25).fill(null));
   const [marker, setMarker] = useState({name: 'fossil', position: '-10px -7051px', width: '2048px', height: '2048px', top: '965px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.07)'});
   const [isActive, setActive] = useState(false);
 
@@ -121,7 +124,6 @@ export default function Board() {
     {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
-  // window.onload = () => populateVillagerIds();
   window.onload = () => fetchVillagerInfo();
 
   function markerPick(i) {
@@ -150,11 +152,7 @@ export default function Board() {
     }
   }
 
-  // NEW FUNCTION
   async function fetchVillagerInfo() {
-    // create object to store 25 villager objects with id, name, img, catchphrase
-    const chosenVillagers = {};
-    
     // Retrieve all villager info
     const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
       method: "GET",  
@@ -168,18 +166,10 @@ export default function Board() {
     response.ok;
     response.status;
     populatedIds(jsonResponse);
-      // .then(results => {
-      //   await results.json();
-      //   results.ok;
-      //   results.status;
-      // });
 
-    // create array of villager ids
-
-
+    // Generate 25 random villager IDs
     function populatedIds(all) {
       let ids = [];
-      // Generate 25 random ids
       for(let i = 0; i < 25; i++) {
         let villagerNum = Math.floor(Math.random() * 419);
         while(ids.includes(villagerNum) || villagerNum < 1) {
@@ -187,91 +177,33 @@ export default function Board() {
         }
         ids.push(villagerNum);
       }
-      // for each id, push villager object to chosenVillagers
-      for(let n of ids) {
-        const currentVillager = all[n];
+      createVillagerObjects(ids, all);
+    }
+
+    // Using villager IDs, create 25 villager objects and update states
+    function createVillagerObjects(ids, all) {
+      const chosenVillagers = board.slice();
+      const chosenVillagersNames = name.slice();
+      const chosenVillagersCatchphrase = phrase.slice();
+
+      ids.forEach((id, i) => {
+
+        const currentVillager = all[id];
         const currentVillagerDetails = {
-          "id": n,
+          "_id": id,
           "name": currentVillager.name,
           "imageUrl": currentVillager.nh_details.photo_url,
           "catchphrase": currentVillager.nh_details.catchphrase,
         }
-        chosenVillagers[n] = currentVillagerDetails;
-      }
+        chosenVillagers[i] = currentVillagerDetails['imageUrl'];
+        chosenVillagersNames[i] = currentVillagerDetails['name'];
+        chosenVillagersCatchphrase[i] = currentVillagerDetails['catchphrase'];
+      });
+      shuffleBoard(chosenVillagers);
+      setName(chosenVillagersNames);
+      setPhrase(chosenVillagersCatchphrase);
     }
-
-    console.log(chosenVillagers);
   }
-
-
-
-
-  // assign villager objects (id, name, imageUrl, catchphrase) to squares
-  // function populateVillagerIds() {
-  //   // ignore, this line is the toggle for selected/not selected
-  //   setSquares(Array(25).fill(null));
-  //   // board state should hold objects with villager detail
-  //   const nextBoard = board.slice();
-  //   let alreadyUsed = [];
-  //   for(let i = 0; i < 25; i++) {
-  //     let villagerNum = Math.floor(Math.random() * 419);
-  //     while(alreadyUsed.includes(villagerNum) || villagerNum < 1) {
-  //       villagerNum = Math.floor(Math.random() * 419);
-  //     }
-  //     alreadyUsed.push(villagerNum);
-  //     // const currentVillager = fetchVillagerInfo(villagerNum);
-  //     // console.log("populateVillagerIds function: " + currentVillager);
-  //     nextBoard[i] = fetchVillagerInfo(villagerNum);
-  //     // nextBoard[i] = fetchVillagerInfo(villagerNum);
-  //     // nextBoard[i] = villager.imageUrl;
-  //   }
-  //   shuffleBoard(nextBoard);
-  //   console.log(nextBoard);
-  //   populateNames(alreadyUsed);
-  //   alreadyUsed = [];
-  // }
-
-  function populateVillagerIds() {
-    // ignore, this line is the toggle for selected/not selected
-    // setSquares(Array(25).fill(null));
-    // board state should hold objects with villager detail
-    // const nextBoard = board.slice();
-    let alreadyUsed = [];
-    for(let i = 0; i < 25; i++) {
-      let villagerNum = Math.floor(Math.random() * 419);
-      while(alreadyUsed.includes(villagerNum) || villagerNum < 1) {
-        villagerNum = Math.floor(Math.random() * 419);
-      }
-      alreadyUsed.push(villagerNum);
-      fetchVillagerInfo(villagerNum);
-      console.log(villagerz);
-      // const currentVillager = fetchVillagerInfo(villagerNum);
-      // console.log("populateVillagerIds function: " + currentVillager);
-      // nextBoard[i] = fetchVillagerInfo(villagerNum);
-      // nextBoard[i] = villager.imageUrl;
-    }
-    // shuffleBoard(nextBoard);
-    // console.log(nextBoard);
-    // populateNames(alreadyUsed);
-    alreadyUsed = [];
-  }
-
-
-  async function populateNames(arr) {
-    const nextNames = name.slice();
-    for(let i = 0; i < arr.length; i++) {
-      let newName = await villagerName(arr[i].name);
-      nextNames[i] = newName;
-    }
-    setName(nextNames);
-  }
-  async function villagerName(villagerID) {
-    const response = await fetch(`https://acnhapi.com/v1/villagers/${villagerID}`);
-    let data = await response.json();
-    const currentVillager = data.name["name-USen"];
-    return currentVillager;
-  }
-
 
   return (
     <div className="all">
@@ -281,48 +213,48 @@ export default function Board() {
           <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
           <div className="board-row">
             <h1 className={`titleSquare b ${isActive ? "bounce" : ""}`}>B</h1>
-            <Square value={squares[0]} title={name[0]} background={board[0]} selection={marker} onSquareClick={() => handleClick(0)} />
-            <Square value={squares[1]} title={name[1]} background={board[1]} selection={marker} onSquareClick={() => handleClick(1)} />
-            <Square value={squares[2]} title={name[2]} background={board[2]} selection={marker} onSquareClick={() => handleClick(2)} />
-            <Square value={squares[3]} title={name[3]} background={board[3]} selection={marker} onSquareClick={() => handleClick(3)} />
-            <Square value={squares[4]} title={name[4]} background={board[4]} selection={marker} onSquareClick={() => handleClick(4)} />
+            <Square value={squares[0]} name={name[0]} villager={board[0]} catchphrase={phrase[0]} selection={marker} onSquareClick={() => handleClick(0)} />
+            <Square value={squares[1]} name={name[1]} villager={board[1]} catchphrase={phrase[1]} selection={marker} onSquareClick={() => handleClick(1)} />
+            <Square value={squares[2]} name={name[2]} villager={board[2]} catchphrase={phrase[2]} selection={marker} onSquareClick={() => handleClick(2)} />
+            <Square value={squares[3]} name={name[3]} villager={board[3]} catchphrase={phrase[3]} selection={marker} onSquareClick={() => handleClick(3)} />
+            <Square value={squares[4]} name={name[4]} villager={board[4]} catchphrase={phrase[4]} selection={marker} onSquareClick={() => handleClick(4)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare i ${isActive ? "bounce" : ""}`}>I</h1>
-            <Square value={squares[5]} title={name[5]} background={board[5]} selection={marker} onSquareClick={() => handleClick(5)} />
-            <Square value={squares[6]} title={name[6]} background={board[6]} selection={marker} onSquareClick={() => handleClick(6)} />
-            <Square value={squares[7]} title={name[7]} background={board[7]} selection={marker} onSquareClick={() => handleClick(7)} />
-            <Square value={squares[8]} title={name[8]} background={board[8]} selection={marker} onSquareClick={() => handleClick(8)} />
-            <Square value={squares[9]} title={name[9]} background={board[9]} selection={marker} onSquareClick={() => handleClick(9)} />
+            <Square value={squares[5]} name={name[5]} villager={board[5]} catchphrase={phrase[5]} selection={marker} onSquareClick={() => handleClick(5)} />
+            <Square value={squares[6]} name={name[6]} villager={board[6]} catchphrase={phrase[6]} selection={marker} onSquareClick={() => handleClick(6)} />
+            <Square value={squares[7]} name={name[7]} villager={board[7]} catchphrase={phrase[7]} selection={marker} onSquareClick={() => handleClick(7)} />
+            <Square value={squares[8]} name={name[8]} villager={board[8]} catchphrase={phrase[8]} selection={marker} onSquareClick={() => handleClick(8)} />
+            <Square value={squares[9]} name={name[9]} villager={board[9]} catchphrase={phrase[9]} selection={marker} onSquareClick={() => handleClick(9)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare n ${isActive ? "bounce" : ""}`}>N</h1>
-            <Square value={squares[10]} title={name[10]} background={board[10]} selection={marker} onSquareClick={() => handleClick(10)} />
-            <Square value={squares[11]} title={name[11]} background={board[11]} selection={marker} onSquareClick={() => handleClick(11)} />
+            <Square value={squares[10]} name={name[10]} villager={board[10]} catchphrase={phrase[10]} selection={marker} onSquareClick={() => handleClick(10)} />
+            <Square value={squares[11]} name={name[11]} villager={board[11]} catchphrase={phrase[11]} selection={marker} onSquareClick={() => handleClick(11)} />
             {/* Free space: */}
-            <Square value={squares[12]} title={""} background={giftImg} selection={marker} onSquareClick={() => handleClick(12)} />
-            <Square value={squares[13]} title={name[13]} background={board[13]} selection={marker} onSquareClick={() => handleClick(13)} />
-            <Square value={squares[14]} title={name[14]} background={board[14]} selection={marker} onSquareClick={() => handleClick(14)} />
+            <Square value={squares[12]} name={""} villager={giftImg} catchphrase={"Free space"} selection={marker} onSquareClick={() => handleClick(12)} />
+            <Square value={squares[13]} name={name[13]} villager={board[13]} catchphrase={phrase[13]} selection={marker} onSquareClick={() => handleClick(13)} />
+            <Square value={squares[14]} name={name[14]} villager={board[14]} catchphrase={phrase[14]} selection={marker} onSquareClick={() => handleClick(14)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare g ${isActive ? "bounce" : ""}`}>G</h1>
-            <Square value={squares[15]} title={name[15]} background={board[15]} selection={marker} onSquareClick={() => handleClick(15)} />
-            <Square value={squares[16]} title={name[16]} background={board[16]} selection={marker} onSquareClick={() => handleClick(16)} />
-            <Square value={squares[17]} title={name[17]} background={board[17]} selection={marker} onSquareClick={() => handleClick(17)} />
-            <Square value={squares[18]} title={name[18]} background={board[18]} selection={marker} onSquareClick={() => handleClick(18)} />
-            <Square value={squares[19]} title={name[19]} background={board[19]} selection={marker} onSquareClick={() => handleClick(19)} />
+            <Square value={squares[15]} name={name[15]} villager={board[15]} catchphrase={phrase[15]} selection={marker} onSquareClick={() => handleClick(15)} />
+            <Square value={squares[16]} name={name[16]} villager={board[16]} catchphrase={phrase[16]} selection={marker} onSquareClick={() => handleClick(16)} />
+            <Square value={squares[17]} name={name[17]} villager={board[17]} catchphrase={phrase[17]} selection={marker} onSquareClick={() => handleClick(17)} />
+            <Square value={squares[18]} name={name[18]} villager={board[18]} catchphrase={phrase[18]} selection={marker} onSquareClick={() => handleClick(18)} />
+            <Square value={squares[19]} name={name[19]} villager={board[19]} catchphrase={phrase[19]} selection={marker} onSquareClick={() => handleClick(19)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare o ${isActive ? "bounce" : ""}`}>O</h1>
-            <Square value={squares[20]} title={name[20]} background={board[20]} selection={marker} onSquareClick={() => handleClick(20)} />
-            <Square value={squares[21]} title={name[21]} background={board[21]} selection={marker} onSquareClick={() => handleClick(21)} />
-            <Square value={squares[22]} title={name[22]} background={board[22]} selection={marker} onSquareClick={() => handleClick(22)} />
-            <Square value={squares[23]} title={name[23]} background={board[23]} selection={marker} onSquareClick={() => handleClick(23)} />
-            <Square value={squares[24]} title={name[24]} background={board[24]} selection={marker} onSquareClick={() => handleClick(24)} />
+            <Square value={squares[20]} name={name[20]} villager={board[20]} catchphrase={phrase[20]} selection={marker} onSquareClick={() => handleClick(20)} />
+            <Square value={squares[21]} name={name[21]} villager={board[21]} catchphrase={phrase[21]} selection={marker} onSquareClick={() => handleClick(21)} />
+            <Square value={squares[22]} name={name[22]} villager={board[22]} catchphrase={phrase[22]} selection={marker} onSquareClick={() => handleClick(22)} />
+            <Square value={squares[23]} name={name[23]} villager={board[23]} catchphrase={phrase[23]} selection={marker} onSquareClick={() => handleClick(23)} />
+            <Square value={squares[24]} name={name[24]} villager={board[24]} catchphrase={phrase[24]} selection={marker} onSquareClick={() => handleClick(24)} />
           </div>
         </div>
         {/* <div className="status">{isActive}</div> */}
-        <ShuffleButton className="shuffle" onButtonClick={() => populateVillagerIds()}>Shuffle</ShuffleButton>
+        <ShuffleButton className="shuffle" onButtonClick={() => fetchVillagerInfo()}>Shuffle</ShuffleButton>
 
         <div className="buttonContainerContainer mx-auto col-7">
             <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
