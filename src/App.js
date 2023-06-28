@@ -59,7 +59,6 @@ function Square({ villager, name, catchphrase, onSquareClick, selection, value }
         style={{
           backgroundImage: `url(${villager})`,
         }}
-        // alt title={title}
         title={`"${catchphrase}"`}
         alt={name}
       >
