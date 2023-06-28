@@ -59,7 +59,7 @@ function Square({ villager, name, catchphrase, onSquareClick, selection, value }
         style={{
           backgroundImage: `url(${villager})`,
         }}
-        title={`"${catchphrase}"`}
+        title={catchphrase}
         alt={name}
       >
         <div 
@@ -212,44 +212,44 @@ export default function Board() {
           <div className="confetti-container">{isActive && <ConfettiExplosion />}</div>
           <div className="board-row">
             <h1 className={`titleSquare b ${isActive ? "bounce" : ""}`}>B</h1>
-            <Square value={squares[0]} name={name[0]} villager={board[0]} catchphrase={phrase[0]} selection={marker} onSquareClick={() => handleClick(0)} />
-            <Square value={squares[1]} name={name[1]} villager={board[1]} catchphrase={phrase[1]} selection={marker} onSquareClick={() => handleClick(1)} />
-            <Square value={squares[2]} name={name[2]} villager={board[2]} catchphrase={phrase[2]} selection={marker} onSquareClick={() => handleClick(2)} />
-            <Square value={squares[3]} name={name[3]} villager={board[3]} catchphrase={phrase[3]} selection={marker} onSquareClick={() => handleClick(3)} />
-            <Square value={squares[4]} name={name[4]} villager={board[4]} catchphrase={phrase[4]} selection={marker} onSquareClick={() => handleClick(4)} />
+            <Square value={squares[0]} name={name[0]} villager={board[0]} catchphrase={`"${phrase[0]}"`} selection={marker} onSquareClick={() => handleClick(0)} />
+            <Square value={squares[1]} name={name[1]} villager={board[1]} catchphrase={`"${phrase[1]}"`} selection={marker} onSquareClick={() => handleClick(1)} />
+            <Square value={squares[2]} name={name[2]} villager={board[2]} catchphrase={`"${phrase[2]}"`} selection={marker} onSquareClick={() => handleClick(2)} />
+            <Square value={squares[3]} name={name[3]} villager={board[3]} catchphrase={`"${phrase[3]}"`} selection={marker} onSquareClick={() => handleClick(3)} />
+            <Square value={squares[4]} name={name[4]} villager={board[4]} catchphrase={`"${phrase[4]}"`} selection={marker} onSquareClick={() => handleClick(4)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare i ${isActive ? "bounce" : ""}`}>I</h1>
-            <Square value={squares[5]} name={name[5]} villager={board[5]} catchphrase={phrase[5]} selection={marker} onSquareClick={() => handleClick(5)} />
-            <Square value={squares[6]} name={name[6]} villager={board[6]} catchphrase={phrase[6]} selection={marker} onSquareClick={() => handleClick(6)} />
-            <Square value={squares[7]} name={name[7]} villager={board[7]} catchphrase={phrase[7]} selection={marker} onSquareClick={() => handleClick(7)} />
-            <Square value={squares[8]} name={name[8]} villager={board[8]} catchphrase={phrase[8]} selection={marker} onSquareClick={() => handleClick(8)} />
-            <Square value={squares[9]} name={name[9]} villager={board[9]} catchphrase={phrase[9]} selection={marker} onSquareClick={() => handleClick(9)} />
+            <Square value={squares[5]} name={name[5]} villager={board[5]} catchphrase={`"${phrase[5]}"`} selection={marker} onSquareClick={() => handleClick(5)} />
+            <Square value={squares[6]} name={name[6]} villager={board[6]} catchphrase={`"${phrase[6]}"`} selection={marker} onSquareClick={() => handleClick(6)} />
+            <Square value={squares[7]} name={name[7]} villager={board[7]} catchphrase={`"${phrase[7]}"`} selection={marker} onSquareClick={() => handleClick(7)} />
+            <Square value={squares[8]} name={name[8]} villager={board[8]} catchphrase={`"${phrase[8]}"`} selection={marker} onSquareClick={() => handleClick(8)} />
+            <Square value={squares[9]} name={name[9]} villager={board[9]} catchphrase={`"${phrase[9]}"`} selection={marker} onSquareClick={() => handleClick(9)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare n ${isActive ? "bounce" : ""}`}>N</h1>
-            <Square value={squares[10]} name={name[10]} villager={board[10]} catchphrase={phrase[10]} selection={marker} onSquareClick={() => handleClick(10)} />
-            <Square value={squares[11]} name={name[11]} villager={board[11]} catchphrase={phrase[11]} selection={marker} onSquareClick={() => handleClick(11)} />
+            <Square value={squares[10]} name={name[10]} villager={board[10]} catchphrase={`"${phrase[10]}"`} selection={marker} onSquareClick={() => handleClick(10)} />
+            <Square value={squares[11]} name={name[11]} villager={board[11]} catchphrase={`"${phrase[11]}"`} selection={marker} onSquareClick={() => handleClick(11)} />
             {/* Free space: */}
             <Square value={squares[12]} name={""} villager={giftImg} catchphrase={"Free space"} selection={marker} onSquareClick={() => handleClick(12)} />
-            <Square value={squares[13]} name={name[13]} villager={board[13]} catchphrase={phrase[13]} selection={marker} onSquareClick={() => handleClick(13)} />
-            <Square value={squares[14]} name={name[14]} villager={board[14]} catchphrase={phrase[14]} selection={marker} onSquareClick={() => handleClick(14)} />
+            <Square value={squares[13]} name={name[13]} villager={board[13]} catchphrase={`"${phrase[13]}"`} selection={marker} onSquareClick={() => handleClick(13)} />
+            <Square value={squares[14]} name={name[14]} villager={board[14]} catchphrase={`"${phrase[14]}"`} selection={marker} onSquareClick={() => handleClick(14)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare g ${isActive ? "bounce" : ""}`}>G</h1>
-            <Square value={squares[15]} name={name[15]} villager={board[15]} catchphrase={phrase[15]} selection={marker} onSquareClick={() => handleClick(15)} />
-            <Square value={squares[16]} name={name[16]} villager={board[16]} catchphrase={phrase[16]} selection={marker} onSquareClick={() => handleClick(16)} />
-            <Square value={squares[17]} name={name[17]} villager={board[17]} catchphrase={phrase[17]} selection={marker} onSquareClick={() => handleClick(17)} />
-            <Square value={squares[18]} name={name[18]} villager={board[18]} catchphrase={phrase[18]} selection={marker} onSquareClick={() => handleClick(18)} />
-            <Square value={squares[19]} name={name[19]} villager={board[19]} catchphrase={phrase[19]} selection={marker} onSquareClick={() => handleClick(19)} />
+            <Square value={squares[15]} name={name[15]} villager={board[15]} catchphrase={`"${phrase[15]}"`} selection={marker} onSquareClick={() => handleClick(15)} />
+            <Square value={squares[16]} name={name[16]} villager={board[16]} catchphrase={`"${phrase[16]}"`} selection={marker} onSquareClick={() => handleClick(16)} />
+            <Square value={squares[17]} name={name[17]} villager={board[17]} catchphrase={`"${phrase[17]}"`} selection={marker} onSquareClick={() => handleClick(17)} />
+            <Square value={squares[18]} name={name[18]} villager={board[18]} catchphrase={`"${phrase[18]}"`} selection={marker} onSquareClick={() => handleClick(18)} />
+            <Square value={squares[19]} name={name[19]} villager={board[19]} catchphrase={`"${phrase[19]}"`} selection={marker} onSquareClick={() => handleClick(19)} />
           </div>
           <div className="board-row">
             <h1 className={`titleSquare o ${isActive ? "bounce" : ""}`}>O</h1>
-            <Square value={squares[20]} name={name[20]} villager={board[20]} catchphrase={phrase[20]} selection={marker} onSquareClick={() => handleClick(20)} />
-            <Square value={squares[21]} name={name[21]} villager={board[21]} catchphrase={phrase[21]} selection={marker} onSquareClick={() => handleClick(21)} />
-            <Square value={squares[22]} name={name[22]} villager={board[22]} catchphrase={phrase[22]} selection={marker} onSquareClick={() => handleClick(22)} />
-            <Square value={squares[23]} name={name[23]} villager={board[23]} catchphrase={phrase[23]} selection={marker} onSquareClick={() => handleClick(23)} />
-            <Square value={squares[24]} name={name[24]} villager={board[24]} catchphrase={phrase[24]} selection={marker} onSquareClick={() => handleClick(24)} />
+            <Square value={squares[20]} name={name[20]} villager={board[20]} catchphrase={`"${phrase[20]}"`} selection={marker} onSquareClick={() => handleClick(20)} />
+            <Square value={squares[21]} name={name[21]} villager={board[21]} catchphrase={`"${phrase[21]}"`} selection={marker} onSquareClick={() => handleClick(21)} />
+            <Square value={squares[22]} name={name[22]} villager={board[22]} catchphrase={`"${phrase[22]}"`} selection={marker} onSquareClick={() => handleClick(22)} />
+            <Square value={squares[23]} name={name[23]} villager={board[23]} catchphrase={`"${phrase[23]}"`} selection={marker} onSquareClick={() => handleClick(23)} />
+            <Square value={squares[24]} name={name[24]} villager={board[24]} catchphrase={`"${phrase[24]}"`} selection={marker} onSquareClick={() => handleClick(24)} />
           </div>
         </div>
         {/* <div className="status">{isActive}</div> */}
