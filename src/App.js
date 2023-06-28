@@ -152,6 +152,7 @@ export default function Board() {
   }
 
   async function fetchVillagerInfo() {
+    setSquares(Array(25).fill(false))
     // Retrieve all villager info
     const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
       method: "GET",  
