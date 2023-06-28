@@ -49,28 +49,6 @@ function Footer() {
   );
 }
 
-async function fetchVillagerInfo(i) {
-  const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
-  method: "GET",  
-  headers: {
-      'X-API-KEY': process.env.REACT_APP_NOOKIPEDIA_API_KEY,
-      'Accept-Version': '1.0.0',
-      'Accept': 'application/json'
-    }
-  });
-  const villagers = await response.json();
-  response.ok;
-  response.status;
-
-  const villager = {
-    id: i,
-    name: villagers[i].name,
-    imageUrl: villagers[i].nh_details.photo_url,
-    catchphrase: villagers[i].nh_details.catchphrase,
-  }
-  console.log(villager);
-  return villager;
-}
 
 function Square({onSquareClick, background, title, selection, value}) {  
   return (
@@ -143,7 +121,8 @@ export default function Board() {
     {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
-  window.onload = () => populateImages();
+  // window.onload = () => populateVillagerIds();
+  window.onload = () => fetchVillagerInfo();
 
   function markerPick(i) {
     let selection = sprite[i];
@@ -170,10 +149,93 @@ export default function Board() {
       setActive(false);
     }
   }
-  
-  function populateImages() {
-    setSquares(Array(25).fill(null));
-    const nextBoard = board.slice();
+
+  // NEW FUNCTION
+  async function fetchVillagerInfo() {
+    // create object to store 25 villager objects with id, name, img, catchphrase
+    const chosenVillagers = {};
+    
+    // Retrieve all villager info
+    const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
+      method: "GET",  
+      headers: {
+          'X-API-KEY': process.env.REACT_APP_NOOKIPEDIA_API_KEY,
+          'Accept-Version': '1.0.0',
+          'Accept': 'application/json'
+        }
+      });
+    const jsonResponse = await response.json();
+    response.ok;
+    response.status;
+    populatedIds(jsonResponse);
+      // .then(results => {
+      //   await results.json();
+      //   results.ok;
+      //   results.status;
+      // });
+
+    // create array of villager ids
+
+
+    function populatedIds(all) {
+      let ids = [];
+      // Generate 25 random ids
+      for(let i = 0; i < 25; i++) {
+        let villagerNum = Math.floor(Math.random() * 419);
+        while(ids.includes(villagerNum) || villagerNum < 1) {
+          villagerNum = Math.floor(Math.random() * 419);
+        }
+        ids.push(villagerNum);
+      }
+      // for each id, push villager object to chosenVillagers
+      for(let n of ids) {
+        const currentVillager = all[n];
+        const currentVillagerDetails = {
+          "id": n,
+          "name": currentVillager.name,
+          "imageUrl": currentVillager.nh_details.photo_url,
+          "catchphrase": currentVillager.nh_details.catchphrase,
+        }
+        chosenVillagers[n] = currentVillagerDetails;
+      }
+    }
+
+    console.log(chosenVillagers);
+  }
+
+
+
+
+  // assign villager objects (id, name, imageUrl, catchphrase) to squares
+  // function populateVillagerIds() {
+  //   // ignore, this line is the toggle for selected/not selected
+  //   setSquares(Array(25).fill(null));
+  //   // board state should hold objects with villager detail
+  //   const nextBoard = board.slice();
+  //   let alreadyUsed = [];
+  //   for(let i = 0; i < 25; i++) {
+  //     let villagerNum = Math.floor(Math.random() * 419);
+  //     while(alreadyUsed.includes(villagerNum) || villagerNum < 1) {
+  //       villagerNum = Math.floor(Math.random() * 419);
+  //     }
+  //     alreadyUsed.push(villagerNum);
+  //     // const currentVillager = fetchVillagerInfo(villagerNum);
+  //     // console.log("populateVillagerIds function: " + currentVillager);
+  //     nextBoard[i] = fetchVillagerInfo(villagerNum);
+  //     // nextBoard[i] = fetchVillagerInfo(villagerNum);
+  //     // nextBoard[i] = villager.imageUrl;
+  //   }
+  //   shuffleBoard(nextBoard);
+  //   console.log(nextBoard);
+  //   populateNames(alreadyUsed);
+  //   alreadyUsed = [];
+  // }
+
+  function populateVillagerIds() {
+    // ignore, this line is the toggle for selected/not selected
+    // setSquares(Array(25).fill(null));
+    // board state should hold objects with villager detail
+    // const nextBoard = board.slice();
     let alreadyUsed = [];
     for(let i = 0; i < 25; i++) {
       let villagerNum = Math.floor(Math.random() * 419);
@@ -181,13 +243,20 @@ export default function Board() {
         villagerNum = Math.floor(Math.random() * 419);
       }
       alreadyUsed.push(villagerNum);
-      const villager = fetchVillagerInfo(villagerNum);
-      nextBoard[i] = villager.imageUrl;
+      fetchVillagerInfo(villagerNum);
+      console.log(villagerz);
+      // const currentVillager = fetchVillagerInfo(villagerNum);
+      // console.log("populateVillagerIds function: " + currentVillager);
+      // nextBoard[i] = fetchVillagerInfo(villagerNum);
+      // nextBoard[i] = villager.imageUrl;
     }
-    shuffleBoard(nextBoard);
-    populateNames(alreadyUsed);
+    // shuffleBoard(nextBoard);
+    // console.log(nextBoard);
+    // populateNames(alreadyUsed);
     alreadyUsed = [];
   }
+
+
   async function populateNames(arr) {
     const nextNames = name.slice();
     for(let i = 0; i < arr.length; i++) {
@@ -253,7 +322,7 @@ export default function Board() {
           </div>
         </div>
         {/* <div className="status">{isActive}</div> */}
-        <ShuffleButton className="shuffle" onButtonClick={() => populateImages()}>Shuffle</ShuffleButton>
+        <ShuffleButton className="shuffle" onButtonClick={() => populateVillagerIds()}>Shuffle</ShuffleButton>
 
         <div className="buttonContainerContainer mx-auto col-7">
             <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
