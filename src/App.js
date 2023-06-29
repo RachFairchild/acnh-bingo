@@ -139,7 +139,7 @@ export default function Board() {
 
   function handleClick(i) {
     const nextSquares = squares.slice();
-    if(!i) {
+    if(i === null) {
       for(let i = 0; i < 25; i++) {
         nextSquares[i] = null;
       }
