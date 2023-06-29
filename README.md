@@ -10,7 +10,9 @@ Part Bingo board and part scavenger hunt, Bingo Hopper is a unique take on an ol
 
 [View live site!](https://bingohopper.netlify.app/)
 
-![Bingo Hopper demo](https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif)
+<img src="https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif" alt="Bingo Hopper demo">
+
+<!-- ![Bingo Hopper demo](https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif) -->
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8796881a-43e9-40ed-a859-dcaeb3a3ec68/deploy-status)](https://app.netlify.com/sites/bingohopper/deploys)
 
@@ -30,7 +32,7 @@ We've all been there: with only 10 spots on your island and 419 possible village
 
 <div align="center" display="block">
 <img src="https://dodo.ac/np/images/9/90/Sasha_amiibo.png">
-<sup> *Sasha, the ultimate dreamy* </sup>
+<span><sup> *Sasha, the ultimate dreamy* </sup></span>
 </div>
 
 Bingo Hopper allows users to immediately begin generating and using *Animal Crossing*-themed bingo boards. This app is a niche and lightweight solution for professional streamers and casual gamers alike. Use Bingo Hopper on your own or share with your followers for your next island hopping stream.
