@@ -152,7 +152,7 @@ export default function Board() {
   }
 
   async function fetchVillagerInfo() {
-    setSquares(Array(25).fill(false))
+    // setSquares(Array(25).fill(false))
     // Retrieve all villager info
     const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
       method: "GET",  
@@ -165,7 +165,14 @@ export default function Board() {
     const jsonResponse = await response.json();
     response.ok;
     response.status;
-    populatedIds(jsonResponse);
+
+    if(localStorage.getItem('ids')) { 
+      const sessionIds = JSON.parse(localStorage.getItem('ids'));
+      console.log(sessionIds);
+      createVillagerObjects(sessionIds, jsonResponse);
+    } else {
+      populatedIds(jsonResponse);
+    }
 
     // Generate 25 random villager IDs
     function populatedIds(all) {
@@ -178,6 +185,7 @@ export default function Board() {
         ids.push(villagerNum);
       }
       createVillagerObjects(ids, all);
+      localStorage.setItem('ids', JSON.stringify(ids));
     }
 
     // Using villager IDs, create 25 villager objects and update states
