@@ -1,7 +1,7 @@
 
 # Bingo Hopper
 
-Bingo Hopper is a lightweight web application built using React, CSS3, and HTML5 and powered by the [Nookipedia API](https://api.nookipedia.com/). 
+Bingo Hopper is a lightweight and responsive web application built using React, CSS3, and HTML5 and powered by the [Nookipedia API](https://api.nookipedia.com/). 
 
 Part Bingo board and part scavenger hunt, Bingo Hopper is a unique take on an old classic, providing an Animal Crossing-specific resource for professional streamers and casual players alike.
 ## Demo
@@ -28,8 +28,7 @@ We've all been there: with only 10 spots on your island and 419 possible village
 
 "Island hopping" is a term borne of the unending quest for the perfect set of neighbors. In order to find your favorite "dreamy," users will often fly from island to island in order to find that 1 of 419. Island hopping is not for the faint of heart, and can take [hours or days](https://www.youtube.com/watch?v=kA-ueFYqWjU). In order to make things a little more interesting, users often create their own bingo cards and check off the villagers they have found while searching for their ultimate dreamy.
 
-![Sasha](https://dodo.ac/np/images/9/90/Sasha_amiibo.png)
-*Sasha, the ultimate dreamy*
+<img src="https://dodo.ac/np/images/9/90/Sasha_amiibo.png">
 <sup><sub>Sasha, the ultimate dreamy</sub></sup>
 
 Bingo Hopper allows users to immediately begin generating and using *Animal Crossing*-themed bingo boards. This app is a niche and lightweight solution for professional streamers and casual gamers alike. Use Bingo Hopper on your own or share with your followers for your next island hopping stream.
