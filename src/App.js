@@ -123,19 +123,14 @@ export default function Board() {
     {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
-  // On load, check local storage for prev session
-  // window.onload = () => {
-  //   if(localStorage.getItem('ids') && localStorage.getItem('all')) { 
-  //     // retrieve session IDs and parse back into array type
-  //     const sessionIds = JSON.parse(localStorage.getItem('ids'));
-  //     const sessionAll = JSON.parse(localStorage.getItem('all'));
-  //     console.log(sessionIds);
-  //     createVillagerObjects(sessionIds, sessionAll);
-  //   } else {
-  //     fetchVillagerInfo();
-  //   }
-  // };
-  window.onload = () => fetchVillagerInfo();
+  window.onload = () => {
+    const sessionMarkers = JSON.parse(localStorage.getItem('markers'));
+    console.log(sessionMarkers);
+    if(sessionMarkers) {
+      setSquares(JSON.parse(localStorage.getItem('markers')));
+    } 
+    fetchVillagerInfo();
+  }
 
   function markerPick(i) {
     let selection = sprite[i];
@@ -144,11 +139,18 @@ export default function Board() {
 
   function handleClick(i) {
     const nextSquares = squares.slice();
-    if(!squares[i]) {
-      nextSquares[i] = true;
+    if(!i) {
+      for(let i = 0; i < 25; i++) {
+        nextSquares[i] = null;
+      }
     } else {
-      nextSquares[i] = null;
+      if(!squares[i]) {
+        nextSquares[i] = true;
+      } else {
+        nextSquares[i] = null;
+      }
     }
+    localStorage.setItem('markers', JSON.stringify(nextSquares));
     setSquares(nextSquares);
     winnerCheck(nextSquares);
   }
@@ -165,6 +167,8 @@ export default function Board() {
 
   function shuffleClick() {
     localStorage.clear('ids');
+    localStorage.clear('markers');
+    handleClick(null);
     fetchVillagerInfo();
   }
 
@@ -174,7 +178,6 @@ export default function Board() {
 
     if(sessionAll) { 
       if(sessionIds) {
-        console.log(sessionIds);
         createVillagerObjects(sessionIds, sessionAll);
       } else {
         populatedIds(sessionAll);
