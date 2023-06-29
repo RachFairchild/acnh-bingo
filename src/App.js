@@ -123,6 +123,18 @@ export default function Board() {
     {name: 'gift', position: '-10px -4983px', width: '2048px', height: '2048px', top: '963px', bottom: '0px', right: '4px', left: '0px', transform: 'scale(0.065)'}
   ];
 
+  // On load, check local storage for prev session
+  // window.onload = () => {
+  //   if(localStorage.getItem('ids') && localStorage.getItem('all')) { 
+  //     // retrieve session IDs and parse back into array type
+  //     const sessionIds = JSON.parse(localStorage.getItem('ids'));
+  //     const sessionAll = JSON.parse(localStorage.getItem('all'));
+  //     console.log(sessionIds);
+  //     createVillagerObjects(sessionIds, sessionAll);
+  //   } else {
+  //     fetchVillagerInfo();
+  //   }
+  // };
   window.onload = () => fetchVillagerInfo();
 
   function markerPick(i) {
@@ -151,27 +163,42 @@ export default function Board() {
     }
   }
 
-  async function fetchVillagerInfo() {
-    // setSquares(Array(25).fill(false))
-    // Retrieve all villager info
-    const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
-      method: "GET",  
-      headers: {
-          'X-API-KEY': process.env.REACT_APP_NOOKIPEDIA_API_KEY,
-          'Accept-Version': '1.0.0',
-          'Accept': 'application/json'
-        }
-      });
-    const jsonResponse = await response.json();
-    response.ok;
-    response.status;
+  function shuffleClick() {
+    localStorage.clear('ids');
+    fetchVillagerInfo();
+  }
 
-    if(localStorage.getItem('ids')) { 
-      const sessionIds = JSON.parse(localStorage.getItem('ids'));
-      console.log(sessionIds);
-      createVillagerObjects(sessionIds, jsonResponse);
+  async function fetchVillagerInfo() {
+    const sessionIds = JSON.parse(localStorage.getItem('ids'));
+    let sessionAll = JSON.parse(localStorage.getItem('all'));
+
+    if(sessionAll) { 
+      if(sessionIds) {
+        console.log(sessionIds);
+        createVillagerObjects(sessionIds, sessionAll);
+      } else {
+        populatedIds(sessionAll);
+      }
     } else {
-      populatedIds(jsonResponse);
+      const response = await fetch('https://api.nookipedia.com/villagers?game=NH&nhdetails=true', {
+        method: "GET",  
+        headers: {
+            'X-API-KEY': process.env.REACT_APP_NOOKIPEDIA_API_KEY,
+            'Accept-Version': '1.0.0',
+            'Accept': 'application/json'
+          }
+        });
+      const jsonResponse = await response.json();
+      response.ok;
+      response.status;
+      sessionAll = jsonResponse;
+      localStorage.setItem('all', JSON.stringify(sessionAll));
+      
+      if(sessionIds) {
+        createVillagerObjects(sessionIds, sessionAll);;
+      } else {
+        populatedIds(sessionAll);
+      }
     }
 
     // Generate 25 random villager IDs
@@ -262,7 +289,7 @@ export default function Board() {
           </div>
         </div>
         {/* <div className="status">{isActive}</div> */}
-        <ShuffleButton className="shuffle" onButtonClick={() => fetchVillagerInfo()}>Shuffle</ShuffleButton>
+        <ShuffleButton className="shuffle" onButtonClick={() => shuffleClick()}>Shuffle</ShuffleButton>
 
         <div className="buttonContainerContainer mx-auto col-7">
             <button onClick={() => markerPick(0)} className="buttonContainer btn btn-light btn-default">
