@@ -8,9 +8,9 @@ Part Bingo board and part scavenger hunt, Bingo Hopper is a unique take on an ol
 
 <div align="center" display="block">
 
-[View live site!](https://bingohopper.netlify.app/)
+<a href="https://bingohopper.netlify.app/"><img src="https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif" alt="Bingo Hopper demo"></a>
 
-<img src="https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif" alt="Bingo Hopper demo">
+[View live site!](https://bingohopper.netlify.app/)
 
 <!-- ![Bingo Hopper demo](https://raw.githubusercontent.com/RachFairchild/acnh-bingo/main/bingo-hopper-demo.gif) -->
 
