@@ -1,7 +1,7 @@
 
 # Bingo Hopper
 
-Bingo Hopper is a lightweight and responsive web application built using React, CSS3, and HTML5 and powered by the [Nookipedia API](https://api.nookipedia.com/). 
+Bingo Hopper is a lightweight and responsive web application built using React, Node.js, CSS3, and HTML5 and powered by the [Nookipedia API](https://api.nookipedia.com/). 
 
 Part Bingo board and part scavenger hunt, Bingo Hopper is a unique take on an old classic, providing an Animal Crossing-specific resource for professional streamers and casual players alike.
 ## Demo
