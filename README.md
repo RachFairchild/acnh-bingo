@@ -28,7 +28,7 @@ If you have any feedback, suggestions, or bugs to report, please reach out via [
 
 We've all been there: with only 10 spots on your island and 419 possible villagers, it's no surprise that the decisions we make in filling the vacancies on our *Animal Crossing: New Horizons* islands can become a hotly debated topic. But choosing villagers isn't as simple as a point and click.
 
-"Island hopping" is a term borne of the unending quest for the perfect set of neighbors. In order to find your favorite "dreamy," users will often fly from island to island in order to find that 1 of 419. Island hopping is not for the faint of heart, and can take [hours or days](https://www.youtube.com/watch?v=kA-ueFYqWjU). In order to make things a little more interesting, users often create their own bingo cards and check off the villagers they have found while searching for their ultimate dreamy.
+"Island hopping" is a term borne of the unending quest for the perfect set of neighbors. In order to find your favorite "dreamy," users will often fly from island to island in order to find that 1 of 419. Island hopping is not for the faint of heart, and can take [hours or days](https://www.youtube.com/watch?v=kA-ueFYqWjU). In order to make things a little more interesting, users often create their own bingo cards and check off the villagers they have found while searching for their #1 dreamy.
 
 <div align="center" display="block">
 <img src="https://dodo.ac/np/images/9/90/Sasha_amiibo.png">
